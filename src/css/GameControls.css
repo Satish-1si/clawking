@@ -1,0 +1,178 @@
+
+
+/* Controls */
+.controls {
+  position: absolute;
+  background-color: #6c757d;
+  color: white;
+  height: 25%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./assets/control.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Tablets and larger devices (>= 767px) */
+@media (min-width: 767px) {
+  .timer {
+    height: 89px;
+    /* Tablet/Desktop height */
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+  .nav_container,
+  .section,
+  .timer,
+  .controls {
+    width: 40%;
+    margin: 0 auto;
+    /* center horizontally */
+  }
+}
+.button_Container {
+  position: absolute;   /* Place on top of everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;        /* Center the button */
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Prevent container from blocking clicks */
+}
+
+.start-button {
+  width: 150px;
+  height: 150px;
+  background-image: url('/assets/Startplaying.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  pointer-events: all;  /* Allow button to be clickable */
+}
+
+
+
+/* ======= Controls Container ======= */
+.controls-container {
+  position: absolute;
+  bottom: 10px;            /* distance from bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;  /* movement grid on top, catch button below */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;           /* above video */
+}
+
+/* ======= Movement Buttons Grid ======= */
+.movement-grid {
+  display: grid;
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px;
+  gap: 5px;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 10px;     /* space below grid for catch button */
+}
+
+.movement-grid button {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.movement-grid button:hover {
+  transform: scale(1.1);
+}
+
+/* ======= Catch Button ======= */
+.catch-button-wrapper button {
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.catch-button-wrapper button:hover {
+  transform: scale(1.05);
+}
+
+/* ======= Responsive Adjustments ======= */
+
+/* Mobile <768px */
+@media (max-width: 767px) {
+  .movement-grid {
+    grid-template-columns: 40px 40px 40px;
+    grid-template-rows: 40px 40px 40px;
+    gap: 3px;
+  }
+
+  .movement-grid button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .catch-button-wrapper button {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Tablet 768px - 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+  .movement-grid {
+    grid-template-columns: 45px 45px 45px;
+    grid-template-rows: 45px 45px 45px;
+  }
+
+  .movement-grid button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .catch-button-wrapper button {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Desktop >=992px */
+@media (min-width: 992px) {
+  .movement-grid {
+    grid-template-columns: 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px;
+  }
+
+  .movement-grid button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .catch-button-wrapper button {
+    width: 80px;
+    height: 80px;
+  }
+}

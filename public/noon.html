@@ -1,0 +1,413 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>
+    Order Confirmation
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      position: relative;
+
+    }
+
+    /* style.css */
+
+    .countinue_btn {
+
+      position: sticky;
+      /* Fix the strip at the bottom */
+      bottom: 0;
+      /* Stick to bottom */
+      width: 100%;
+      /* Full width */
+      background-color: #ffffff;
+      /* White background */
+      padding: 16px 0;
+      /* Top and bottom padding */
+      display: flex;
+      /* Flex to center button */
+      justify-content: center;
+      border-top: 1px solid #e5e7eb;
+      /* Optional top border */
+      z-index: 50;
+      /* Above other content */
+      margin-bottom: 0;
+    }
+    .image_container{
+       height:246px;
+       width:357px;
+    }
+
+    .countinue_btn button {
+      background-color: #2563eb;
+      /* Tailwind blue-600 equivalent */
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.875rem;
+      /* text-sm */
+      border-radius: 0.5rem;
+      /* rounded-lg */
+      width: 80%;
+      /* Scale down to 80% of container */
+      max-width: 28rem;
+      /* max-w-md */
+      height: 3rem;
+      /* h-12 */
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+    }
+
+    .countinue_btn button:hover {
+      background-color: #1d4ed8;
+      /* Tailwind blue-700 on hover */
+    }
+    .claimNow{
+       display: flex;
+       justify-content: center;
+    }
+     .popup_images{
+       width:362px;
+       height:246px;
+     }
+     .clam-btn{
+         width:128px;
+       height:40px;
+     }
+/* Container holds parent and child images */
+.container {
+  position: relative;
+  width: 357px;   /* Adjust size as needed */
+  height: 246px;  /* Adjust size as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Parent Image fills container */
+.box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+/* Claim Button - child image centered horizontally, slightly above bottom */
+.black-button-img {
+  position: absolute;
+  bottom: 40px;           /* distance from bottom of parent */
+  left: 50%;              /* center horizontally */
+  transform: translateX(-50%);
+  width: 120px;           /* adjust size */
+  height: 40px;           /* adjust size */
+  cursor: pointer;
+}
+
+/* Red Dot - top-right corner of parent */
+.parent_container{
+   position: relative;
+}
+.red-dot-img {
+  position: absolute;
+  top: 0px;
+  left: 50%;               /* Start from the horizontal center */
+  transform: translateX(145px); /* Move 175px left from center */
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+
+  </style>
+</head>
+
+<body class="bg-white flex justify-center p-6">
+  <main class="max-w-md w-full parent_container">
+    <section class="mb-6">
+      <div class="flex flex-col items-left mb-2">
+        <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center mb-1">
+          <i class="fas fa-check text-white text-lg"></i>
+        </div>
+        <p class="text-sm font-semibold text-gray-800">
+          Thank you for your order, Arif
+        </p>
+      </div>
+
+      <h1 class="text-3xl font-extrabold text-gray-900 leading-snug mb-2">
+        Your order has been placed
+      </h1>
+      <p class="text-sm text-gray-700 mb-4">
+        You'll receive an email at
+        <span class="tracking-widest text-gray-900 font-semibold">
+          ••••••••••••••@gmail.com
+        </span>
+        once your order is confirmed
+      </p>
+      <div class="flex items-center justify-between text-gray-900 font-semibold mb-2">
+        <span>
+          Order No.
+        </span>
+        <span class="tracking-widest">
+          ••• ••• ••••
+        </span>
+      </div>
+      <div class="flex space-x-1 mb-2">
+        <div class="flex-1 h-2 rounded-l-md bg-green-600">
+        </div>
+        <div class="flex-1 h-2 bg-gray-300">
+        </div>
+        <div class="flex-1 h-2 bg-gray-300">
+        </div>
+        <div class="flex-1 h-2 rounded-r-md bg-gray-300">
+        </div>
+      </div>
+      <div class="flex space-x-6 text-xs text-gray-400 font-semibold select-none">
+        <div class="flex items-center space-x-1 text-green-600">
+          <i class="fas fa-check-circle text-green-600">
+          </i>
+          <span>
+            Ordered
+          </span>
+        </div>
+        <div class="flex items-center space-x-1">
+          <i class="fas fa-check-circle">
+          </i>
+          <span>
+            Processing
+          </span>
+        </div>
+        <div class="flex items-center space-x-1">
+          <i class="fas fa-check-circle">
+          </i>
+          <span>
+            Shipped
+          </span>
+        </div>
+        <div class="flex items-center space-x-1">
+          <i class="fas fa-check-circle">
+          </i>
+          <span>
+            Delivered
+          </span>
+        </div>
+      </div>
+    </section>
+    <section class="mb-6 bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex items-center justify-between">
+      <div class="max-w-[75%]">
+        <h2 class="font-bold text-gray-900 text-base leading-tight mb-1" id="win_text">
+          Catch a prize in the Claw Game and Win 5 AED Noon Credits!
+        </h2>
+        <p class="text-sm text-gray-700" id="win_chance">
+          Play before this chance runs out!
+        </p>
+        <button id="playGame"
+          class="mt-4 bg-blue-600 text-white font-semibold text-sm rounded px-6 py-2 hover:bg-blue-700 transition"
+          type="button">
+          Play Now
+        </button>
+      </div>
+      <img alt="Illustration of a claw machine game with a teddy bear prize inside"
+        class="w-16 h-16 rounded-full object-cover ml-4 flex-shrink-0" height="64" src="assets/Icon.png" width="64" />
+    </section>
+    <section class="mb-6">
+      <img
+        alt="Advertisement banner for Citi Credit Card offering up to AED 1,500 cashback with a new Citi Credit Card, includes Citi logo and card image"
+        class="w-full rounded-md object-contain" height="80" src="assets/ad_02.jpg" width="320" />
+      <p class="text-[9px] text-gray-500 mt-1 text-center select-none">
+        Citibank N.A. - UAE Branch is licensed by the Central Bank of the UAE
+      </p>
+    </section>
+    <section class="mb-6">
+      <img
+        alt="Advertisement banner for Citi Credit Card offering up to AED 1,500 cashback with a new Citi Credit Card, includes Citi logo and card image"
+        class="w-full rounded-md object-contain" height="80" src="assets/ad_03.jpg" width="320" />
+      <p class="text-[9px] text-gray-500 mt-1 text-center select-none">
+        Citibank N.A. - UAE Branch is licensed by the Central Bank of the UAE
+      </p>
+    </section>
+    <section class="mb-6">
+      <img
+        alt="Advertisement banner for Citi Credit Card offering up to AED 1,500 cashback with a new Citi Credit Card, includes Citi logo and card image"
+        class="w-full rounded-md object-contain" height="80" src="assets/citiBank.png" width="320" />
+      <p class="text-[9px] text-gray-500 mt-1 text-center select-none">
+        Citibank N.A. - UAE Branch is licensed by the Central Bank of the UAE
+      </p>
+    </section>
+    <section class="mb-6">
+      <img
+        alt="Advertisement banner for Citi Credit Card offering up to AED 1,500 cashback with a new Citi Credit Card, includes Citi logo and card image"
+        class="w-full rounded-md object-contain" height="80" src="assets/ad_04.jpg" width="320" />
+      <p class="text-[9px] text-gray-500 mt-1 text-center select-none">
+        Citibank N.A. - UAE Branch is licensed by the Central Bank of the UAE
+      </p>
+    </section>
+    <section class="mb-6">
+      <img
+        alt="Advertisement banner for Citi Credit Card offering up to AED 1,500 cashback with a new Citi Credit Card, includes Citi logo and card image"
+        class="w-full rounded-md object-contain" height="80" src="assets/ad_01.jpg" width="320" />
+      <p class="text-[9px] text-gray-500 mt-1 text-center select-none">
+        Citibank N.A. - UAE Branch is licensed by the Central Bank of the UAE
+      </p>
+    </section>
+    <div class="bg-white w-full  countinue_btn">
+      <button>
+
+        CONTINUE SHOPPING
+      </button>
+<!-- Win Overlay -->
+<div id="winOverlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center hidden">
+  <div class="container">
+    <img src="assets/‌win.png" alt="White Box" class="box-img">
+
+    <!-- Continue Button -->
+    <img id="winContinueBtn" src="assets/claim.png" alt="Claim Button" class="black-button-img">
+
+    <!-- Close Button (X) -->
+    <img id="winCloseBtn" src="assets/closebtn.png" alt="Close Button" class="red-dot-img">
+  </div>
+</div>
+
+<!-- Lose Overlay -->
+<div id="loseOverlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center hidden">
+  <div class="container">
+    <img src="assets/losescreen.png" alt="Lose Box" class="box-img">
+
+    <!-- Try Again Button -->
+    <img id="loseTryAgainBtn" src="assets/tryagain.png" alt="Try Again Button" class="black-button-img">
+
+    <!-- Close Button (X) -->
+    <img id="loseCloseBtn" src="assets/closebtn.png" alt="Close Button" class="red-dot-img">
+  </div>
+</div>
+
+
+    </div>
+  </main>
+</body>
+<script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+      const storedResult = localStorage.getItem("gameResult") ;
+      const winOverlay = document.getElementById("winOverlay");
+      const loseOverlay = document.getElementById("loseOverlay");
+      const playGameDiv = document.getElementById("playGame");
+      const playBtn = document.getElementById("playGame"); // separate button for navigation
+      const priceTag = document.getElementById("pricetag");
+
+      // Show overlay if result exists
+      if (storedResult !== null) {
+        const isWin = JSON.parse(storedResult);
+        if (isWin && winOverlay) {
+          winOverlay.classList.remove("hidden");
+        } else if (!isWin && loseOverlay) {
+          loseOverlay.classList.remove("hidden");
+        }
+      }
+
+      // Animate price
+      function animatePrice() {
+        if (!priceTag) return;
+
+        const rawPrice = parseFloat(priceTag.textContent.replace(/[^0-9.]/g, ""));
+        if (isNaN(rawPrice)) return;
+
+        const discountedPrice = rawPrice * 0.7;
+        const duration = 3000;
+        const frameRate = 60;
+        const totalFrames = Math.round((duration / 1000) * frameRate);
+        let frame = 0;
+
+        const animate = () => {
+          frame++;
+          const progress = frame / totalFrames;
+          const newPrice = rawPrice - (rawPrice - discountedPrice) * progress;
+          priceTag.textContent = `₨${newPrice.toFixed(2)}`;
+
+          if (frame < totalFrames) {
+            requestAnimationFrame(animate);
+          } else {
+            priceTag.textContent = `₨${discountedPrice.toFixed(2)}`;
+          }
+        };
+
+        requestAnimationFrame(animate);
+      }
+
+      // Win overlay - continue button
+      const winContinueBtn = document.getElementById("winContinueBtn");
+      const winCloseBtn = document.getElementById("winCloseBtn");
+
+      const win_text = document.getElementById("win_text");
+      const win_chance = document.getElementById("win_chance");
+
+      if (winContinueBtn) {
+        winContinueBtn.addEventListener("click", () => {
+          winOverlay.classList.add("hidden");
+          if (playGameDiv) playGameDiv.style.display = "none";
+
+          if (win_text) {
+            win_text.innerHTML = `
+          <div>
+            🎉 Congratulations! <br/>
+            <span>5 AED has been added to your Noon Credits</span>
+          </div>`;
+          }
+
+          if (win_chance) {
+            win_chance.textContent = "Keep shopping to win more.";
+          }
+
+          animatePrice();
+          localStorage.removeItem("gameResult");
+        });
+      }
+
+      if (winCloseBtn) {
+        winCloseBtn.addEventListener("click", () => {
+          winOverlay.classList.add("hidden");
+          localStorage.removeItem("gameResult");
+        });
+      }
+
+      // Lose overlay - try again button
+      const loseTryAgainBtn = document.getElementById("loseTryAgainBtn");
+      const loseCloseBtn = document.getElementById("loseCloseBtn");
+
+      if (loseTryAgainBtn) {
+        loseTryAgainBtn.addEventListener("click", () => {
+          loseOverlay.classList.add("hidden");
+          localStorage.removeItem("gameResult");
+        });
+      }
+
+      if (loseCloseBtn) {
+        loseCloseBtn.addEventListener("click", () => {
+          loseOverlay.classList.add("hidden");
+          localStorage.removeItem("gameResult");
+        });
+      }
+
+      // Play button navigation
+      if (playBtn) {
+        playBtn.addEventListener("click", () => {
+          window.location.href = "/PlayZone";
+        });
+      }
+      
+    });
+
+</script>
+
+
+</html>

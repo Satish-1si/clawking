@@ -1,0 +1,355 @@
+/* Reset + Global */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  min-height: 100vh;
+  background-color: #072847;
+  color: white;
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column; /* stack sections vertically */
+  align-items: center;   /* center cols horizontally */
+}
+
+/* Shared style for all Cols */
+.topView, .sectionView, .bottomView, .timerView {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+/* ================= Common (all devices) ================= */
+.topView {
+  background-image: url("./assets/bg.png");
+  height: 10vh;
+  padding: 10px;
+  position: absolute;
+}
+.sectionView {
+  /* position: relative; */
+  background-color: #072847;
+  height: 63.8vh;
+  padding: 0;
+  display: flex;                 /* make this the flex container */
+  justify-content: center;       /* center horizontally */
+  align-items: center;           /* center vertically */
+}
+
+.sectionView .veido-container {
+  height: 100%;
+  width: 100%;
+  border: 1px solid salmon;
+  display: flex;                 /* still keep flex here */
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionView .veido-container video {
+  max-width: 100%;               /* don’t overflow horizontally */
+  max-height: 100%;              /* don’t overflow vertically */
+  object-fit: cover;           /* scale video without cropping */
+}
+
+
+.timerView {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;   /* or same % as sectionView */
+  width: 100%;        /* responsive */
+  height: 42px;
+  margin: 0 auto;     /* center horizontally */
+  background-image: url("./assets/timerstrip.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 20;
+  margin-top: -30px;
+  scale: 100%;
+}
+
+
+.timerText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.bottomView {
+  position: relative;
+  bottom: 0px;
+  background-image: url("./assets/bg.png");
+  background-size: cover;
+  height: 40vh;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -20px;
+   background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+
+
+}
+.bottomView {
+  width: 100%; /* ensure parent has width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.start-playing-button button {
+  background-image: url('/assets/Startplaying.png');
+}
+
+.catching-button button {
+  background-image: url('/assets/catching.png');
+}
+
+.start-playing-button button,
+.catching-button button {
+  width: 80%;                 /* default width */
+  max-width: 340px;           /* maximum size for large screens */
+  height: 10vh;               /* relative to viewport */
+  max-height: 120px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: block;
+  margin: 5px auto;           /* center horizontally */
+}
+
+.start-playing-button button:hover,
+.catching-button button:hover {
+  transform: scale(1.05);
+  z-index: 5000;
+}
+/* ================= Responsive overrides ================= */
+
+/* 📱 Mobile (<768px) */
+@media (max-width: 767px) {
+  .topView, .sectionView, .timerView, .bottomView {
+    width: 100%;
+  }
+  .start-playing-button button,
+  .catching-button button {
+    width: 350px;               /* fit almost entire screen */
+    height: 17vh;             /* taller for touch */
+    border: none;   /* optional mobile border */
+    margin: 5px auto;         /* vertical spacing & center */
+    scale:70%;
+  }
+
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .topView, .timerView, .bottomView {
+    width: 80%;   /* keep centered */
+  }
+
+  .sectionView {
+    width: 80%;   /* center section */
+    height: calc(100vh - 9vh - 28vh); /* full remaining height between top & bottom */
+  }
+
+  .sectionView .veido-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sectionView .veido-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* fills section fully, may crop slightly */
+  }
+
+  .timerView {
+    width: 80%;
+    height: 60px;
+  }
+  .start-playing-button button,
+  .catching-button button {
+    width: 500px;
+    height: 20vh;
+    margin: 5px auto;
+    border: none;
+
+  }
+}
+
+
+/* 🖥 Large screens (≥992px) */
+@media (min-width: 992px) {
+  .topView, .sectionView, .timerView, .bottomView {
+    width: 60%;   /* centered */
+  }
+    .timerView{
+      height: 50px;
+
+  }
+   .start-playing-button button,
+  .catching-button button {
+    width: 340px;
+    height: 120px;
+    margin: 5px;
+    border: none;
+    scale: 70%;
+  }
+}
+
+
+/* ======= Controls Container ======= */
+.controls-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    width: 100%;
+    height:100%;
+
+}
+.claw_controw,
+.claw {
+  width: 50%;                /* half of parent width */
+  height: 100%;              /* full height of parent */
+  /* border: 4px solid green;   green border */
+
+  display: flex;
+  flex-direction: column;    /* stack children vertically */
+  justify-content: center;   /* center vertically */
+  align-items: center;       /* center horizontally */
+}
+
+
+/* ======= Movement Buttons Grid ======= */
+.movement-grid {
+  display: grid;
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px;
+  gap: 5px;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 10px;     /* space below grid for catch button */
+}
+
+.movement-grid button {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.movement-grid button:hover {
+  transform: scale(1.1);
+}
+
+/* ======= Catch Button ======= */
+.catch-button-wrapper {
+  width: 100%;       /* fill parent width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.catch-button-wrapper button {
+  width: 100%;       /* fill wrapper completely */
+  height: 100%;      /* fill wrapper completely */
+  background-size: cover;     /* image may be cropped */
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.catch-button-wrapper button:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* ======= Responsive Adjustments ======= */
+
+/* Mobile <768px */
+@media (max-width: 767px) {
+  .movement-grid {
+    grid-template-columns: 40px 40px 40px;
+    grid-template-rows: 40px 40px 40px;
+    gap: 3px;
+  }
+
+  .movement-grid button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .catch-button-wrapper button {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Tablet 768px - 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+  .movement-grid {
+    grid-template-columns: 45px 45px 45px;
+    grid-template-rows: 45px 45px 45px;
+  }
+
+  .movement-grid button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .catch-button-wrapper button {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Desktop >=992px */
+@media (min-width: 992px) {
+  .movement-grid {
+    grid-template-columns: 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px;
+  }
+
+  .movement-grid button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .catch-button-wrapper button {
+    width: 80px;
+    height: 80px;
+  }
+}

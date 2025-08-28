@@ -1,0 +1,267 @@
+syntax = "proto3";
+
+message DataPackage{
+     PackageType packageType = 1;
+     oneof Package{
+          LoginMessage loginMessage = 2;
+    SendMessageToRoomMate sendMessageToRoomMate = 3;
+    StartQueueMessage startQueueMessage = 4;
+    StartGameMessage startGameMessage = 5;
+    ArmMoveMessage armMoveMessage = 6;
+    HeartMessage heartMessage = 7;
+    GameResultMessage gameResultMessage = 8;
+    BallCountMessage ballCountMessage = 9;
+    ScoreMessage scoreMessage = 10;
+    EnterRoomMessage enterRoomMessage = 11;
+    ExitRoomMessage exitRoomMessage = 12;
+    NumberOfPeopleInTheRoomMessage numberOfPeopleInTheRoomMessage = 13;
+    WawaMoveMessage wawaMoveMessage = 14;
+    WawaResultMessage wawaResultMessage = 15;
+    PlayGameOrder playGameOrder = 16;
+    TestMessage tsetMessage = 17;
+    CancelGameMessage cancelGameMessage = 18;
+    ExitGameMessage exitGameMessage = 19;
+    GameCompletedMessage gameCompletedMessage = 20;
+    MachineFailedMessage machineFailedMessage = 21;
+    GiftPriceMessage  giftPriceMessage = 22;
+     }
+}
+
+enum PackageType{
+  LOGIN = 0;
+  SENDMESSAGETOROOMMATE = 1;
+  STARTQUEUEMESSAGE = 2;
+  STARTGAMEMESSAGE = 3;
+  ARMMOVEMESSAGE = 4;
+  HEARTMESSAGE = 5;
+  GAMERESULTMESSAGE = 6;
+  BALLCOUNTMESSAGE = 7;
+  SCOREMESSAGE = 8;
+  ENTERROOMMESSAGE = 9;
+  EXITROOMMESSAGE = 10;
+  NUMBEROfPEOPLEINTHEROOMMESSAGE = 11;
+  WAWAMOVEMESSAGE = 12;
+  WAWARESULTMESSAGE = 13;
+  PLAYGAMEORDER = 14;
+  TESTMESSAGE = 15;
+  CANCELGAMEMESSAGE = 16;
+  EXITGAMEMESSAGE = 17;
+  GAMECOMPLETEDMESSAGE = 18;
+  MACHINEFAILEDMESSAGE = 19;
+  GIFTPRICEMESSAGE = 20;
+}
+
+/**Put the user in the Queue*/
+message StartQueueMessage {
+  string userID = 1;// ID
+  string macNo = 2;// equipment
+  bool isServerSide = 3; //Whether it is server side
+  int32 startQueueResult = 4; //1 Login successful failed -1 //0 means the command was sent
+  string des = 5; // Attached text
+  int64 totalGold = 6; //The total number of gold coins returned after a successful start is less than 0 and will not be processed.
+  int32 gameDuring = 7; //The game time unit is seconds, only available for claw machines and coin pushers.
+  int32 playTimes = 8; //Number of plays
+  string giftID = 9; //gift ID
+  string gameID = 10; //game ID
+  bool playAgain = 11;
+}
+
+//Socket Login Messages
+message LoginMessage {
+  string userID = 1; // ID
+  string tempPasswd = 2; // TemPassword
+  bool isServerSide = 3; //ServerSide
+  bool loginResult =4;   //LoginResult
+}
+//Send Message To Roommate
+message SendMessageToRoomMate{
+  int64 senderUserID = 1; // ID
+  string roomID = 2; //roomID or machineID
+  string msgData = 3; // msg data
+  string senderUserName = 4; // Sender Name
+}
+
+//Start Game Message
+message StartGameMessage {
+  string userID = 1;// ID
+  string macNo = 2; // Machine ID
+  bool isServerSide = 3; //Server Side
+  int32 startGameResult = 4;   // Start Game Result (1,-1,0)
+  string des = 5; // message
+  int32 ballCount = 6;  //
+  int64 totalGold = 7; // updated coins
+  int64 totalScore = 8; //
+  int32 gameDuring = 9; //
+  int32 playTimes=10;
+  string giftID = 11; // GiftID
+  string gameID = 12; //GameID
+}
+
+/** Arm Move Messages. Control the arm. When data == 0, the left arm moves. When data == 1, the right arm moves.*/
+message ArmMoveMessage {
+  string userID = 1;// ID
+  string macNo = 2; // machine Id
+  int32  data = 3;
+}
+
+/** Heart Message To Keep The User Connected With The Server*/
+message HeartMessage {
+
+  // ID
+  string userID = 1;
+
+}
+
+/**The game ends and results are returned from the server*/
+message GameResultMessage {
+  string userID = 1;// ID
+  string macNo = 2; // Machine ID
+  int32 gameFinishFlag =3; //标识游戏结果 1 正常结束 -1 非正常结束游戏
+  int64 totalGold = 4; //开局成功返回的总金币数 小于0不处理
+  int64 totalScore = 5; //开局成功返回的总积分数 小于0不处理
+}
+
+/**Number of balls remaining*/
+message BallCountMessage{
+  string userID = 1;
+  string macNo = 2;
+  int32 ballCount = 3;
+}
+
+/**Fraction*/
+message ScoreMessage{
+  string userID = 1;
+  string macNo = 2;
+  int32 score = 3;  //单次赢得的分数
+  int64 inCome = 4; //总共赢得的分数
+}
+
+/*The server needs to reply to the command to enter the game room, and the client needs to obtain the total gold coins and total points.*/
+message EnterRoomMessage{
+  string userID = 1;
+  string macNo = 2;
+  string webrtcClientID = 3;  //srs webrtc ClientID
+  int32 numberOfPeopleInTheRoom = 4;
+  int32  players = 5;
+  string playerPic = 6;
+  string playerName = 7;    //Current Player name
+  string lastWonGameID = 8; // Last Won GameID on the machine
+  string lastWonTime = 9; // Last Won Game Time on the machine
+}
+
+message EnterRoomMessageBackup{
+  string userID = 1;
+  string macNo = 2;
+  int64 totalGold = 3; //The total number of gold coins returned after entering the room is less than 0 and will not be processed.
+  bool isServerSide = 4; //Whether it is server side
+  string webrtcClientID = 5;  //srs webrtc ClientID
+  int32 playTimes = 6; //Number of Continuous plays
+  int32 numberOfPeopleInTheRoom = 7;
+  int32  order = 8;  // Queue position
+  int32  players = 9;
+  string playerPic = 10;
+  string giftID = 11; // Currnet Player Gift ID
+  string gameID = 12; //Current Player Game ID
+  enum  PLAY_STATUS {
+    QUEUE = 0;
+    PLAYING = 1;
+    READYTOPLAY = 2;
+  }
+  PLAY_STATUS playStatus = 13;
+  string playerName = 14;    //Current Player name
+  string lastWonGameID = 15; // Last Won GameID on the machine
+  string lastWonTime = 16; // Last Won GameID on the machine
+  string lastGameTime = 17;  // Last Completed Game Time on the Machine
+  string currentServerTime = 18; // Current Server Time
+}
+
+/** Who exits the room, the server gets disconnected and does not reply */
+message ExitRoomMessage{
+  string userID = 1;
+  string macNo = 2;
+  bool isServerSide = 3; //是否是服务器端
+  string webrtcClientID = 4;  //srs webrtc ClientID
+}
+/**Number of people in the room*/
+message NumberOfPeopleInTheRoomMessage{
+  string macNo = 1;
+  int32 numberOfPeopleInTheRoom = 2;
+
+}
+
+//Claw machine movement
+message WawaMoveMessage {
+
+  // ID
+  string userID = 1;
+
+  // 设备
+  string macNo = 2;
+
+  int32  data = 3;  //0是上 1是下 2是左 3是右 4是下抓
+}
+
+//Catching doll results
+message WawaResultMessage {
+
+  // ID
+  string userID = 1;
+
+  // 设备
+  string macNo = 2;
+
+  int32  data = 3;  //0是没抓到娃娃 1是抓到了娃娃
+}
+
+//Game queue
+//The server sends it to the client
+message PlayGameOrder{
+  string userID = 1;
+  string gameID = 2; //Current Player Game ID
+  string macNo = 3;
+  int32  order = 4;  // Queue position
+  enum  PLAY_STATUS {
+    QUEUE = 0;
+    PLAYING = 1;
+    READYTOPLAY = 3;
+  }
+  PLAY_STATUS playStatus = 5;
+  int32 playTimes = 6; //Number of Continuous plays
+  string currentServerTime = 7; // Current Server Time
+  string lastGameTime = 8;  // Last Completed Game Time on the Machine
+
+}
+
+message TestMessage{
+  string msg = 1;// equipment
+  int32  uid = 2;// Queue, position
+  bool result = 3;
+}
+
+//Cancel Game Message
+message CancelGameMessage {
+  string userID = 1; // ID
+  string macNo = 2; // equipment
+ 
+
+
+   bool isServerSide = 3; //Whether it is server side
+  int32 cancelResult = 4;
+  string des = 5; // Attached text
+  int64 totalGold = 6; //The total number of gold coins returned after a successful start is less than 0 and will not be processed.
+  int64 refundGold = 7;
+    string giftID = 8; //gift ID
+  string gameID = 9; //gift ID
+}
+
+//Exit Playing Game
+message ExitGameMessage {
+  string userID = 1;
+  string macNo = 2;
+  bool isServerSide = 3; //Whether it is server side
+  int32 exitResult = 4; //0 and 1
+  string des = 5; // Attached text
+  int64 totalGold = 6; //The total number of gold coins returned after a successful start is less than 0 and will not be processed.
+  string giftID = 7; //gift ID
+  string gameID = 8; //gift ID
+}

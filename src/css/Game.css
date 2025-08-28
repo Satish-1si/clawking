@@ -1,0 +1,44 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  min-height: 100vh;
+  background-color: #072847;
+  background-size: cover;
+  padding: 20px;
+  color: white;
+}
+
+/* Column styles */
+.topView, .sectionView, .bottomView {
+  background: #1e3a8a; /* default */
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+/* Different colors for visibility */
+.topView { background: #1e3a8a; }     /* Dark Blue */
+.sectionView { background: #2563eb; } /* Blue */
+.bottomView { background: #38bdf8; }  /* Cyan */
+
+/* 📱 Mobile (up to 767px) */
+@media (max-width: 767px) {
+
+}
+
+/* 📲 Tablet (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+ 
+}
+
+/* 🖥 Large Devices (992px and up) */
+@media (min-width: 992px) {
+
+}

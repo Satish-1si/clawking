@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer Bar</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Outer blue bar */
+    .timer-bar {
+      background-color: #1DA1F2; /* bright blue */
+      border-radius: 20px;
+      width: 300px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Inner dark rounded slot */
+    .timer-slot {
+      background-color: #0C203D; /* dark inner bar */
+      border-radius: 15px;
+      width: 120px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    .timer-text {
+      color: #33A1FF;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Optional: hover effect on outer bar */
+    .timer-bar:hover {
+      transform: scale(1.03);
+      transition: transform 0.2s;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .timer-bar {
+        width: 200px;
+        height: 40px;
+      }
+      .timer-slot {
+        width: 90px;
+        height: 25px;
+      }
+      .timer-text {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="timer-bar">
+    <div class="timer-slot">
+      <span class="timer-text">00</span>
+    </div>
+  </div>
+
+</body>
+</html>
