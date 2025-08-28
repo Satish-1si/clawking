@@ -21,8 +21,8 @@ if (true) {
   UI = "682845d4e0a488e1083ca4b4"
   MN = "84ADFCF1237C"
   GI = "670f60219d6cefc370346657"
-  videoLink = "https://15.206.133.82:1985/rtc/v1/whep/?app=live&stream=CK_09-01.flv";
-  socketURL = "wss://3.111.179.100:59199/ws";
+  videoLink = "http://15.206.133.82:1985/rtc/v1/whep/?app=live&stream=CK_09-01.flv";
+  socketURL = "ws://3.111.179.100:59199/ws";
   tp = "ACJ3winyybgztU1YH"
 
 }
@@ -508,12 +508,12 @@ const WebSocketComponent = () => {
     <Container fluid className="app-container">
       <Row className="wrapper">
         {/* Top nav area */}
-        <Col xs={12} lg={6} className="topView">
+        <Col xs={12} lg={3} className="topView">
 
         </Col>
 
         {/* Video / section */}
-         <Col xs={12} lg={6} className="sectionView">
+         <Col xs={12} lg={3} className="sectionView">
             <div className='veido-container'>
                   <video
                 ref={videoRef}
@@ -521,7 +521,7 @@ const WebSocketComponent = () => {
                 playsInline
                 muted
                  onCanPlay={() => setVideoReady(true)}
-                   src="https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"
+                  //  src="https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"
 
                 />
             </div>
@@ -530,14 +530,14 @@ const WebSocketComponent = () => {
 
         {/* Timer strip */}
 
-          <Col xs={12} lg={6} className="timerView">
+          <Col xs={12} lg={3} className="timerView">
             <div className="timerText">00:{formatTime(gameDuration) || 0.00}</div>
           </Col>
 
 
 
         {/* Controls */}
-        <Col xs={12} lg={8} className="bottomView">
+        <Col xs={12} lg={3} className="bottomView">
           {/* start button */}
          {!StartPlaying && (
           <div className="start-playing-button">
@@ -545,7 +545,7 @@ const WebSocketComponent = () => {
           </div>
          )}
           {/* cache button */}
-         {catching && (
+         {!catching && (
          <div className="catching-button">
           <button
             
@@ -560,30 +560,34 @@ const WebSocketComponent = () => {
             <div className="movement-grid">
           <div></div>
   <button
+    className='top'
     onTouchStart={(e) => { e.preventDefault(); Up(); }}
     onTouchEnd={(e) => { e.preventDefault(); Stop(); }}
     onMouseDown={(e) => { e.preventDefault(); Up(); }}
     onMouseUp={(e) => { e.preventDefault(); Stop(); }}
-    style={{ backgroundImage: "url('/assets/Up.png')" }}
+    // style={{ backgroundImage: "url('/assets/Up.png')" }}
   />
   <div></div>
   <button
+  className='left'
     onTouchStart={(e) => { e.preventDefault(); Left(); }}
     onTouchEnd={(e) => { e.preventDefault(); Stop(); }}
     onMouseDown={(e) => { e.preventDefault(); Left(); }}
     onMouseUp={(e) => { e.preventDefault(); Stop(); }}
-    style={{ backgroundImage: "url('/assets/Left.png')" }}
+    // style={{ backgroundImage: "url('/assets/Left.png')" }}
   />
   <div></div>
   <button
+  className='right'
     onTouchStart={(e) => { e.preventDefault(); Right(); }}
     onTouchEnd={(e) => { e.preventDefault(); Stop(); }}
     onMouseDown={(e) => { e.preventDefault(); Right(); }}
     onMouseUp={(e) => { e.preventDefault(); Stop(); }}
-    style={{ backgroundImage: "url('/assets/Right.png')" }}
+    // style={{ backgroundImage: "url('/assets/Right.png')" }}
   />
   <div></div>
   <button
+  className='bottom'
     onTouchStart={(e) => { e.preventDefault(); Down(); }}
     onTouchEnd={(e) => { e.preventDefault(); Stop(); }}
     onMouseDown={(e) => { e.preventDefault(); Down(); }}
