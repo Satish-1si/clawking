@@ -14,6 +14,8 @@ html, body {
   background-color: #072847;
   color: white;
   position: relative;
+    background-size: cover;
+
 }
 
 .wrapper {
@@ -42,7 +44,7 @@ html, body {
 
 }
 .sectionView {
-  
+
   background-color: #072847;
   height: auto;
   padding: 0;
@@ -73,7 +75,7 @@ html, body {
   flex: 0 0 auto;         /* fixed height, stays above bottomView */
   width: 100%;
   height: 42px;
-  margin-top: -40px;      /* optional: move slightly up */
+  margin-top: -43px;      /* optional: move slightly up */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,6 +187,7 @@ html, body {
   .timerView {
     width: 80%;
     height: 60px;
+    margin-top: -49px;
   }
   .start-playing-button button,
   .catching-button button {
@@ -205,6 +208,9 @@ html, body {
     .timerView{
       height: 50px;
 
+  }
+  .sectionView{
+    height:66vh;
   }
    .start-playing-button button,
   .catching-button button {

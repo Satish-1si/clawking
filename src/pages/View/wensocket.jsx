@@ -516,12 +516,13 @@ const WebSocketComponent = () => {
          <Col xs={12} lg={6} className="sectionView">
             <div className='veido-container'>
                   <video
-                // ref={videoRef}
+                ref={videoRef}
                 autoPlay
                 playsInline
                 muted
                  onCanPlay={() => setVideoReady(true)}
-                 src="https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"
+                   src="https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"
+
                 />
             </div>
         </Col>
