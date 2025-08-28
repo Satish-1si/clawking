@@ -1,14 +1,16 @@
 /* Reset + Global */
-html, body, #root {
+html, body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;  /* disable scroll */
   box-sizing: border-box;
 }
 
 .app-container {
-  min-height: 100vh;
+  height: 100vh;       /* full viewport height */
+  width: 100vw;        /* full viewport width */
   background-color: #072847;
   color: white;
   position: relative;
