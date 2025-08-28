@@ -17,7 +17,10 @@ html, body, #root {
 .wrapper {
   display: flex;
   flex-direction: column; /* stack sections vertically */
-  align-items: center;   /* center cols horizontally */
+  align-items: center;    /* center horizontally */
+  min-height: 100vh;      /* ensure full viewport height */
+  width: 100vw;
+  overflow-y: auto;       /* enable vertical scrolling */
 }
 
 /* Shared style for all Cols */
@@ -33,22 +36,26 @@ html, body, #root {
   background-image: url("/assets/bg.png");
   height: 10vh;
   padding: 10px;
-  position: absolute;
+    flex: 0 0 auto;         /* keep natural height */
+
 }
 .sectionView {
-  /* position: relative; */
+  
   background-color: #072847;
-  height: 63.8vh;
+  height: auto;
   padding: 0;
+  margin: 0;
   display: flex;                 /* make this the flex container */
   justify-content: center;       /* center horizontally */
   align-items: center;           /* center vertically */
+    flex: 0 0 auto;         /* natural height, no stretching */
+
 }
 
 .sectionView .veido-container {
   height: 100%;
   width: 100%;
-  /* border: 1px solid salmon; */
+  border: 1px solid salmon;
   display: flex;                 /* still keep flex here */
   justify-content: center;
   align-items: center;
@@ -60,24 +67,20 @@ html, body, #root {
   object-fit: cover;           /* scale video without cropping */
 }
 
-
 .timerView {
-  position: relative;
+  flex: 0 0 auto;         /* fixed height, stays above bottomView */
+  width: 100%;
+  height: 42px;
+  margin-top: -40px;      /* optional: move slightly up */
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 900px;   /* or same % as sectionView */
-  width: 100%;        /* responsive */
-  height: 42px;
-  margin: 0 auto;     /* center horizontally */
   background-image: url("/assets/timerstrip.svg");
   background-repeat: no-repeat;
   background-position: center;
   z-index: 20;
-  margin-top: -34px;
-  scale: 100%;
+  position: relative;
 }
-
 
 .timerText {
   position: absolute;
@@ -92,27 +95,16 @@ html, body, #root {
 }
 
 .bottomView {
-  position: relative;
-  bottom: 0px;
+  flex: 1 1 auto;         /* take all remaining space */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url("/assets/bg.png");
   background-size: cover;
-  height: 40vh;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -20px;
-   background-repeat: no-repeat;
   background-position: center;
+  background-repeat: no-repeat;
   overflow: hidden;
-
-
-}
-.bottomView {
-  width: 100%; /* ensure parent has width */
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
 }
 
