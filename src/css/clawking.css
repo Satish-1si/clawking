@@ -30,7 +30,7 @@ html, body, #root {
 
 /* ================= Common (all devices) ================= */
 .topView {
-  background-image: url("./assets/bg.png");
+  background-image: url("/assets/bg.png");
   height: 10vh;
   padding: 10px;
   position: absolute;
@@ -70,7 +70,7 @@ html, body, #root {
   width: 100%;        /* responsive */
   height: 42px;
   margin: 0 auto;     /* center horizontally */
-  background-image: url("./assets/timerstrip.svg");
+  background-image: url("/assets/timerstrip.svg");
   background-repeat: no-repeat;
   background-position: center;
   z-index: 20;
@@ -94,7 +94,7 @@ html, body, #root {
 .bottomView {
   position: relative;
   bottom: 0px;
-  background-image: url("./assets/bg.png");
+  background-image: url("/assets/bg.png");
   background-size: cover;
   height: 40vh;
   padding: 10px;

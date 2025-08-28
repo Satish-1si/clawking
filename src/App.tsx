@@ -13,6 +13,7 @@ import Noon from "./pages/noon";
 import { lazy, Suspense } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 const Game = lazy(() => import("./pages/game"));
 
 const queryClient = new QueryClient();

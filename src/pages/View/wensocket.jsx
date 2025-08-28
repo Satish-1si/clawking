@@ -546,6 +546,7 @@ const WebSocketComponent = () => {
          {catching && (
          <div className="catching-button">
           <button
+            
             style={{ backgroundImage: "url('/assets/catching.png')" }}
           />
          </div>
