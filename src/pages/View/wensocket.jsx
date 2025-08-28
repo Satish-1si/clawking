@@ -545,7 +545,7 @@ const WebSocketComponent = () => {
           </div>
          )}
           {/* cache button */}
-         {!catching && (
+         {catching && (
          <div className="catching-button">
           <button
             
