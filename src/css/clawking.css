@@ -224,42 +224,39 @@ html, body {
 
 
 /* ======= Controls Container ======= */
+/* ======= Controls Container ======= */
 .controls-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 1000;
-    width: 100%;
-    height:100%;
-
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  width: 100%;
+  height: 100%; /* match bottomView height */
 }
+
 .claw_controw,
 .claw {
-  width: 50%;                /* half of parent width */
-  height: 100%;              /* full height of parent */
-  /* border: 4px solid green;   green border */
-
+  width: 50%;   
+  height: 100%; 
   display: flex;
-  flex-direction: column;    /* stack children vertically */
-  justify-content: center;   /* center vertically */
-  align-items: center;       /* center horizontally */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 
 /* ======= Movement Buttons Grid ======= */
 .movement-grid {
   display: grid;
-  grid-template-columns: 50px 50px 50px;
-  grid-template-rows: 50px 50px 50px;
-  gap: 5px;
-  justify-items: center;
-  align-items: center;
-  margin-bottom: 10px;     /* space below grid for catch button */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1vh;           /* scales with viewport */
+  width: 60%;          /* relative to claw container */
+  max-width: 200px;    /* optional upper limit */
 }
 
 .movement-grid button {
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  aspect-ratio: 1/1;   /* keeps square shape */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -274,16 +271,17 @@ html, body {
 
 /* ======= Catch Button ======= */
 .catch-button-wrapper {
-  width: 100%;       /* fill parent width */
+  width: 60%;           /* relative to claw container */
+  max-width: 200px;     /* optional max width */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .catch-button-wrapper button {
-  width: 100%;       /* fill wrapper completely */
-  height: 100%;      /* fill wrapper completely */
-  background-size: cover;     /* image may be cropped */
+  width: 100%;
+  aspect-ratio: 1/1;    /* square shape */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border: none;
@@ -295,61 +293,46 @@ html, body {
   transform: scale(1.05);
 }
 
-
-
-/* ======= Responsive Adjustments ======= */
+/* ======= Responsive Overrides ======= */
 
 /* Mobile <768px */
 @media (max-width: 767px) {
   .movement-grid {
-    grid-template-columns: 40px 40px 40px;
-    grid-template-rows: 40px 40px 40px;
-    gap: 3px;
+    width: 70%;
+    max-width: 160px;
+    gap: 0.8vh;
   }
 
-  .movement-grid button {
-    width: 40px;
-    height: 40px;
-  }
-
-  .catch-button-wrapper button {
-    width: 60px;
-    height: 60px;
+  .catch-button-wrapper {
+    width: 70%;
+    max-width: 160px;
   }
 }
 
 /* Tablet 768px - 991px */
 @media (min-width: 768px) and (max-width: 991px) {
   .movement-grid {
-    grid-template-columns: 45px 45px 45px;
-    grid-template-rows: 45px 45px 45px;
+    width: 65%;
+    max-width: 180px;
+    gap: 0.9vh;
   }
 
-  .movement-grid button {
-    width: 45px;
-    height: 45px;
-  }
-
-  .catch-button-wrapper button {
-    width: 70px;
-    height: 70px;
+  .catch-button-wrapper {
+    width: 65%;
+    max-width: 180px;
   }
 }
 
 /* Desktop >=992px */
 @media (min-width: 992px) {
   .movement-grid {
-    grid-template-columns: 50px 50px 50px;
-    grid-template-rows: 50px 50px 50px;
+    width: 60%;
+    max-width: 200px;
+    gap: 1vh;
   }
 
-  .movement-grid button {
-    width: 50px;
-    height: 50px;
-  }
-
-  .catch-button-wrapper button {
-    width: 80px;
-    height: 80px;
+  .catch-button-wrapper {
+    width: 60%;
+    max-width: 200px;
   }
 }

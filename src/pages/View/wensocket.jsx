@@ -539,7 +539,7 @@ const WebSocketComponent = () => {
         {/* Controls */}
         <Col xs={12} lg={8} className="bottomView">
           {/* start button */}
-         {StartPlaying && (
+         {!StartPlaying && (
           <div className="start-playing-button">
             <button onClick={StartQueue} aria-label="Start Playing" />
           </div>
@@ -554,7 +554,7 @@ const WebSocketComponent = () => {
          </div>
         )}
 
-           {ControlButtons && (
+           {!ControlButtons && (
         <div className="controls-container" >
             <div className='claw_controw' >
             <div className="movement-grid">
