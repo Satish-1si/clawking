@@ -95,8 +95,9 @@ body {
   flex: 0 0 auto;
   /* fixed height, stays above bottomView */
   width: 100%;
-  height: 42px;
+  height: 45px;
   margin-top: -60px;
+  padding: 2px;
   /* optional: move slightly up */
   display: flex;
   justify-content: center;
@@ -194,8 +195,8 @@ body {
     /* vertical spacing & center */
     scale: 70%;
   }
-
-
+ 
+ 
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -315,8 +316,7 @@ body {
 
 
 
-/* ======= Movement Buttons Grid ======= */
-/* ======= Movement Buttons Grid ======= */
+
 /* ======= Movement Buttons Grid ======= */
 .movement-grid {
   display: grid;
@@ -692,7 +692,7 @@ body {
 
 @media (min-width: 350px) and (max-width: 435px) {
   .timerView {
-    margin-top: -40px;
+    margin-top: -80px;
   }
   .bottomView{
      margin-top: -30px;
