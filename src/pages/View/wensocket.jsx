@@ -567,7 +567,7 @@ const WebSocketComponent = () => {
           {/* start button */}
          {StartPlaying && (
           <div className="start-playing-button">
-            <button onClick={StartQueue} aria-label="Start Playing" />
+            <button onClick={()=>startPlayingVisible(true)} aria-label="Start Playing" />
           </div>
          )}
           {/* cache button */}
