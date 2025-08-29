@@ -295,119 +295,128 @@
     </div>
   </main>
 </body>
+<!-- Add confetti library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
 <script>
-
   document.addEventListener("DOMContentLoaded", () => {
-      const storedResult = localStorage.getItem("gameResult") ;
-      const winOverlay = document.getElementById("winOverlay");
-      const loseOverlay = document.getElementById("loseOverlay");
-      const playGameDiv = document.getElementById("playGame");
-      const playBtn = document.getElementById("playGame"); // separate button for navigation
-      const priceTag = document.getElementById("pricetag");
+    const storedResult = localStorage.getItem("gameResult") || true;
+    const winOverlay = document.getElementById("winOverlay");
+    const loseOverlay = document.getElementById("loseOverlay");
+    const playGameDiv = document.getElementById("playGame");
+    const playBtn = document.getElementById("playGame"); 
+    const priceTag = document.getElementById("pricetag");
 
-      // Show overlay if result exists
-      if (storedResult !== null) {
-        const isWin = JSON.parse(storedResult);
-        if (isWin && winOverlay) {
-          winOverlay.classList.remove("hidden");
-        } else if (!isWin && loseOverlay) {
-          loseOverlay.classList.remove("hidden");
+    // ✅ Confetti function
+    function launchConfetti() {
+      confetti({
+        particleCount: 200,
+        spread: 120,
+        origin: { y: 0.6 }
+      });
+    }
+
+    // Show overlay if result exists
+    if (storedResult !== null) {
+      const isWin = JSON.parse(storedResult);
+      if (isWin && winOverlay) {
+        winOverlay.classList.remove("hidden");
+        launchConfetti(); // 🎉 fire confetti when win screen shows
+      } else if (!isWin && loseOverlay) {
+        loseOverlay.classList.remove("hidden");
+      }
+    }
+
+    // Animate price
+    function animatePrice() {
+      if (!priceTag) return;
+
+      const rawPrice = parseFloat(priceTag.textContent.replace(/[^0-9.]/g, ""));
+      if (isNaN(rawPrice)) return;
+
+      const discountedPrice = rawPrice * 0.7;
+      const duration = 3000;
+      const frameRate = 60;
+      const totalFrames = Math.round((duration / 1000) * frameRate);
+      let frame = 0;
+
+      const animate = () => {
+        frame++;
+        const progress = frame / totalFrames;
+        const newPrice = rawPrice - (rawPrice - discountedPrice) * progress;
+        priceTag.textContent = `₨${newPrice.toFixed(2)}`;
+
+        if (frame < totalFrames) {
+          requestAnimationFrame(animate);
+        } else {
+          priceTag.textContent = `₨${discountedPrice.toFixed(2)}`;
         }
-      }
+      };
 
-      // Animate price
-      function animatePrice() {
-        if (!priceTag) return;
+      requestAnimationFrame(animate);
+    }
 
-        const rawPrice = parseFloat(priceTag.textContent.replace(/[^0-9.]/g, ""));
-        if (isNaN(rawPrice)) return;
+    // Win overlay - continue button
+    const winContinueBtn = document.getElementById("winContinueBtn");
+    const winCloseBtn = document.getElementById("winCloseBtn");
 
-        const discountedPrice = rawPrice * 0.7;
-        const duration = 3000;
-        const frameRate = 60;
-        const totalFrames = Math.round((duration / 1000) * frameRate);
-        let frame = 0;
+    const win_text = document.getElementById("win_text");
+    const win_chance = document.getElementById("win_chance");
 
-        const animate = () => {
-          frame++;
-          const progress = frame / totalFrames;
-          const newPrice = rawPrice - (rawPrice - discountedPrice) * progress;
-          priceTag.textContent = `₨${newPrice.toFixed(2)}`;
+    if (winContinueBtn) {
+      winContinueBtn.addEventListener("click", () => {
+        winOverlay.classList.add("hidden");
+        if (playGameDiv) playGameDiv.style.display = "none";
 
-          if (frame < totalFrames) {
-            requestAnimationFrame(animate);
-          } else {
-            priceTag.textContent = `₨${discountedPrice.toFixed(2)}`;
-          }
-        };
+        if (win_text) {
+          win_text.innerHTML = `
+            <div>
+              🎉 Congratulations! <br/>
+              <span>5 AED has been added to your Noon Credits</span>
+            </div>`;
+        }
 
-        requestAnimationFrame(animate);
-      }
+        if (win_chance) {
+          win_chance.textContent = "Keep shopping to win more.";
+        }
 
-      // Win overlay - continue button
-      const winContinueBtn = document.getElementById("winContinueBtn");
-      const winCloseBtn = document.getElementById("winCloseBtn");
+        animatePrice();
+        localStorage.removeItem("gameResult");
+      });
+    }
 
-      const win_text = document.getElementById("win_text");
-      const win_chance = document.getElementById("win_chance");
+    if (winCloseBtn) {
+      winCloseBtn.addEventListener("click", () => {
+        winOverlay.classList.add("hidden");
+        localStorage.removeItem("gameResult");
+      });
+    }
 
-      if (winContinueBtn) {
-        winContinueBtn.addEventListener("click", () => {
-          winOverlay.classList.add("hidden");
-          if (playGameDiv) playGameDiv.style.display = "none";
+    // Lose overlay - try again button
+    const loseTryAgainBtn = document.getElementById("loseTryAgainBtn");
+    const loseCloseBtn = document.getElementById("loseCloseBtn");
 
-          if (win_text) {
-            win_text.innerHTML = `
-          <div>
-            🎉 Congratulations! <br/>
-            <span>5 AED has been added to your Noon Credits</span>
-          </div>`;
-          }
+    if (loseTryAgainBtn) {
+      loseTryAgainBtn.addEventListener("click", () => {
+        loseOverlay.classList.add("hidden");
+        localStorage.removeItem("gameResult");
+      });
+    }
 
-          if (win_chance) {
-            win_chance.textContent = "Keep shopping to win more.";
-          }
+    if (loseCloseBtn) {
+      loseCloseBtn.addEventListener("click", () => {
+        loseOverlay.classList.add("hidden");
+        localStorage.removeItem("gameResult");
+      });
+    }
 
-          animatePrice();
-          localStorage.removeItem("gameResult");
-        });
-      }
-
-      if (winCloseBtn) {
-        winCloseBtn.addEventListener("click", () => {
-          winOverlay.classList.add("hidden");
-          localStorage.removeItem("gameResult");
-        });
-      }
-
-      // Lose overlay - try again button
-      const loseTryAgainBtn = document.getElementById("loseTryAgainBtn");
-      const loseCloseBtn = document.getElementById("loseCloseBtn");
-
-      if (loseTryAgainBtn) {
-        loseTryAgainBtn.addEventListener("click", () => {
-          loseOverlay.classList.add("hidden");
-          localStorage.removeItem("gameResult");
-        });
-      }
-
-      if (loseCloseBtn) {
-        loseCloseBtn.addEventListener("click", () => {
-          loseOverlay.classList.add("hidden");
-          localStorage.removeItem("gameResult");
-        });
-      }
-
-      // Play button navigation
-      if (playBtn) {
-        playBtn.addEventListener("click", () => {
-          window.location.href = "/PlayZone";
-        });
-      }
-      
-    });
-
+    // Play button navigation
+    if (playBtn) {
+      playBtn.addEventListener("click", () => {
+        window.location.href = "/PlayZone";
+      });
+    }
+  });
 </script>
-
 
 </html>
