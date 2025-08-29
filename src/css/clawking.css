@@ -255,16 +255,17 @@ html, body {
 
 
 /* ======= Movement Buttons Grid ======= */
+/* ======= Movement Buttons Grid ======= */
 .movement-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 1.5vh;                 /* scaled with screen height */
-  width: 85%;
-  max-width: 220px;           
-  aspect-ratio: 1/1;          
-  min-width: 120px;           /* safeguard: visible on tiny screens */
+  gap: 1.2vh;
+  width: 80%;                         /* scale with container */
+  max-width: clamp(120px, 20vw, 160px); /* min 120px, max 160px */
+  aspect-ratio: 1/1;
 }
+
 
 .movement-grid button {
   width: 100%;
@@ -276,7 +277,6 @@ html, body {
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-
 /* Hover/active states */
 .movement-grid button:hover {
   transform: scale(1.1);
@@ -289,14 +289,14 @@ html, body {
 
 /* ======= Catch Button ======= */
 .catch-button-wrapper {
-  width: 60%;
-  max-width: 180px;
+  width: 45%;                 /* reduce width */
+  max-width: 120px;           /* smaller max size */
   aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2vh;
-  min-width: 90px;            /* safeguard: avoid vanishing */
+  margin-top: 1.5vh;          /* slightly less margin */
+  min-width: 90px;
 }
 
 .catch-button-wrapper button {
@@ -322,43 +322,29 @@ html, body {
 
 /* ======= Responsive Overrides ======= */
 @media (max-width: 767px) {
-  .movement-grid {
-    width: 80%;
-    max-width: 150px;
-    gap: 1vh;
-  }
-  .catch-button-wrapper {
-    width: 65%;
-    max-width: 120px;
-    margin-top: 2vh;
-  }
+  .movement-grid { width: 80%; gap: 1vh; max-width: 150px; }
+  .catch-button-wrapper { width: 65%; max-width: 120px; }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .movement-grid { width: 70%; gap: 1.3vh; max-width: 160px; }
+  .catch-button-wrapper { width: 55%; max-width: 140px; }
+}
+/* ======= Desktop adjustments ======= */
+@media (min-width: 992px) {
   .movement-grid {
-    width: 80%;
-    max-width: 180px;
-    gap: 1.5vh;
+    width: 80%;               /* smaller than before */
+    max-width: 120px;         /* reduced from 160px */
+    gap: 1vh;                 /* slightly smaller gap */
   }
+
   .catch-button-wrapper {
-    width: 60%;
-    max-width: 150px;
-    margin-top: 2vh;
+    width: 35%;               /* smaller width */
+    max-width: 100px;         /* reduced from 130px */
+    margin-top: 1vh;          /* less margin */
   }
 }
 
-@media (min-width: 992px) {
-  .movement-grid {
-    width: 75%;
-    max-width: 220px;
-    gap: 1.5vh;
-  }
-  .catch-button-wrapper {
-    width: 55%;
-    max-width: 180px;
-    margin-top: 1.5vh;
-  }
-}
 
 /* ======= Movement Buttons Animation ======= */
 .movement-grid button {

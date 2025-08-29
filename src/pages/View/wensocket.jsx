@@ -547,7 +547,7 @@ const WebSocketComponent = () => {
     onLoadedMetadata={() => console.log("Metadata loaded")}
     onPlaying={() => setVideoReady(true)}
     onWaiting={() => setVideoReady(false)}
-    src={"https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"}
+    src="https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"
   />
 </div>
 
@@ -565,7 +565,7 @@ const WebSocketComponent = () => {
         {/* Controls */}
         {videoReady&&<Col xs={12} lg={3} className="bottomView">
           {/* start button */}
-         {StartPlaying && (
+         {!StartPlaying && (
           <div className="start-playing-button">
             <button onClick={StartQueue} aria-label="Start Playing" />
           </div>
@@ -580,7 +580,7 @@ const WebSocketComponent = () => {
          </div>
         )}
 
-           {ControlButtons && (
+           {!ControlButtons && (
         <div className="controls-container" >
             <div className='claw_controw' >
             <div className="movement-grid">
