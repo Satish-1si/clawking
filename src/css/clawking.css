@@ -135,6 +135,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  z-index: 2000;
 }
 
 .start-playing-button button {
