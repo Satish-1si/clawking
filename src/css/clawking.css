@@ -626,8 +626,10 @@ body {
 @media (max-width: 767px) {
   .start-playing-button button,
   .catching-button button {
-    width: 90%;
-    height: 17vh;
+         width: 100%;
+        height: 23vh;
+        scale: 0.8;
+    
   }
 }
 
