@@ -508,38 +508,63 @@ const WebSocketComponent = () => {
     <Container fluid className="app-container">
       <Row className="wrapper">
         {/* Top nav area */}
-        <Col xs={12} lg={3} className="topView">
+        {videoReady&&<Col xs={12} lg={3} className="topView">
 
-        </Col>
+        </Col>}
 
         {/* Video / section */}
          <Col xs={12} lg={3} className="sectionView">
-            <div className='veido-container'>
-                  <video
-                ref={videoRef}
-                autoPlay
-                playsInline
-                muted
-                 onCanPlay={() => setVideoReady(true)}
-                  //  src="https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"
+<div className="veido-container" >
+  {!videoReady && (
+    <div
+      className="video-preloader"
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0,0,0,0.6)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 500,
+      }}
+    >
+      <div className="bouncing-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  )}
 
-                />
-            </div>
+  <video
+    ref={videoRef}
+    autoPlay
+    playsInline
+    muted
+    onLoadedMetadata={() => console.log("Metadata loaded")}
+    onPlaying={() => setVideoReady(true)}
+    onWaiting={() => setVideoReady(false)}
+  />
+</div>
+
         </Col>
 
 
         {/* Timer strip */}
 
-          <Col xs={12} lg={3} className="timerView">
+          {videoReady&&<Col xs={12} lg={3} className="timerView">
             <div className="timerText">00:{formatTime(gameDuration) || 0.00}</div>
-          </Col>
+          </Col>}
 
 
 
         {/* Controls */}
-        <Col xs={12} lg={3} className="bottomView">
+        {videoReady&&<Col xs={12} lg={3} className="bottomView">
           {/* start button */}
-         {!StartPlaying && (
+         {StartPlaying && (
           <div className="start-playing-button">
             <button onClick={StartQueue} aria-label="Start Playing" />
           </div>
@@ -554,7 +579,7 @@ const WebSocketComponent = () => {
          </div>
         )}
 
-           {!ControlButtons && (
+           {ControlButtons && (
         <div className="controls-container" >
             <div className='claw_controw' >
             <div className="movement-grid">
@@ -613,7 +638,7 @@ const WebSocketComponent = () => {
           {/* controls ==> controlButtons & claws button*/}
 
 
-        </Col>
+        </Col>}
       </Row>
     </Container>
 
