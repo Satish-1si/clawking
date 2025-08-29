@@ -21,8 +21,8 @@ if (true) {
   UI = "682845d4e0a488e1083ca4b4"
   MN = "84ADFCF1237C"
   GI = "670f60219d6cefc370346657"
-  videoLink = "http://15.206.133.82:1985/rtc/v1/whep/?app=live&stream=CK_09-01.flv";
-  socketURL = "ws://3.111.179.100:59199/ws";
+  videoLink = "https://15.206.133.82:1985/rtc/v1/whep/?app=live&stream=CK_09-01.flv";
+  socketURL = "wss://3.111.179.100:59199/ws";
   tp = "ACJ3winyybgztU1YH"
 
 }
@@ -547,6 +547,7 @@ const WebSocketComponent = () => {
     onLoadedMetadata={() => console.log("Metadata loaded")}
     onPlaying={() => setVideoReady(true)}
     onWaiting={() => setVideoReady(false)}
+    src="https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"
   />
 </div>
 
