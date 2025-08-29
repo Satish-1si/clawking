@@ -38,7 +38,7 @@ html, body {
 /* ================= Common (all devices) ================= */
 .topView {
   background-image: url("/assets/bg.png");
-  height: 6vh;
+  height: 10vh;
   padding: 10px;
     flex: 0 0 auto;         /* keep natural height */
 
@@ -232,7 +232,7 @@ html, body {
   z-index: 1000;
   padding: 2%;                /* prevents buttons touching edges */
   box-sizing: border-box;
-  min-height: 120px;          /* safeguard: never collapse */
+  min-height: 10px;          /* safeguard: never collapse */
 }
 
 /* Button images */
@@ -264,6 +264,7 @@ html, body {
   width: 80%;                         /* scale with container */
   max-width: clamp(120px, 20vw, 160px); /* min 120px, max 160px */
   aspect-ratio: 1/1;
+  
 }
 
 
@@ -289,7 +290,7 @@ html, body {
 
 /* ======= Catch Button ======= */
 .catch-button-wrapper {
-  width: 40%;                 /* reduce width */
+  width: 45%;                 /* reduce width */
   max-width: 120px;           /* smaller max size */
   aspect-ratio: 1/1;
   display: flex;
