@@ -1,34 +1,45 @@
 /* Reset + Global */
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;  /* disable scroll */
+  overflow: hidden;
+  /* disable scroll */
   box-sizing: border-box;
 }
 
 .app-container {
-  height: 100vh;       /* full viewport height */
-  width: 100vw;        /* full viewport width */
+  height: 100vh;
+  /* full viewport height */
+  width: 100vw;
+  /* full viewport width */
   background-color: #072847;
   color: white;
   position: relative;
-    background-size: cover;
+  background-size: cover;
 
 }
 
 .wrapper {
   display: flex;
-  flex-direction: column; /* stack sections vertically */
-  align-items: center;    /* center horizontally */
-  min-height: 100vh;      /* ensure full viewport height */
+  flex-direction: column;
+  /* stack sections vertically */
+  align-items: center;
+  /* center horizontally */
+  min-height: 100vh;
+  /* ensure full viewport height */
   width: 100vw;
-  overflow-y: auto;       /* enable vertical scrolling */
+  overflow-y: auto;
+  /* enable vertical scrolling */
 }
 
 /* Shared style for all Cols */
-.topView, .sectionView, .bottomView, .timerView {
+.topView,
+.sectionView,
+.bottomView,
+.timerView {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -38,43 +49,55 @@ html, body {
 /* ================= Common (all devices) ================= */
 .topView {
   background-image: url("/assets/bg.png");
-  height: 10vh;
+  height: 5vh;
   padding: 10px;
-    flex: 0 0 auto;         /* keep natural height */
+  flex: 0 0 auto;
+  /* keep natural height */
 
 }
+
 .sectionView {
 
   background-color: #072847;
-  height: auto;
+  height: 60vh;
   padding: 0;
   margin: 0;
-  display: flex;                 /* make this the flex container */
-  justify-content: center;       /* center horizontally */
-  align-items: center;           /* center vertically */
-    flex: 0 0 auto;         /* natural height, no stretching */
+  display: flex;
+  /* make this the flex container */
+  justify-content: center;
+  /* center horizontally */
+  align-items: center;
+  /* center vertically */
+  flex: 0 0 auto;
+  /* natural height, no stretching */
 
 }
 
 .sectionView .veido-container {
   height: 100%;
   width: 100%;
-  display: flex;                 /* still keep flex here */
+  display: flex;
+  /* still keep flex here */
   justify-content: center;
   align-items: center;
 }
 
 .sectionView .veido-container video {
-  max-width: 100%;               /* don’t overflow horizontally */
-  max-height: 100%;              /* don’t overflow vertically */
-  object-fit: cover;           /* scale video without cropping */
+  max-width: 100%;
+  /* don’t overflow horizontally */
+  max-height: 100%;
+  /* don’t overflow vertically */
+  object-fit: cover;
+  /* scale video without cropping */
 }
 
 .timerView {
-  flex: 0 0 auto;         /* fixed height, stays above bottomView */
+  flex: 0 0 auto;
+  /* fixed height, stays above bottomView */
   width: 100%;
   height: 42px;
-  margin-top: -48px;      /* optional: move slightly up */
+  margin-top: -60px;
+  /* optional: move slightly up */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,7 +106,7 @@ html, body {
   background-position: center;
   z-index: 20;
   position: relative;
-  
+
 }
 
 .timerText {
@@ -99,16 +122,17 @@ html, body {
 }
 
 .bottomView {
-  flex: 1 1 auto;         /* take all remaining space */
+  flex: 1 1 auto;
+  /* take all remaining space */
   width: 100%;
+  margin-top: 1px red solid;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  align-items: flex-start;
   background-image: url("/assets/bg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
   position: relative;
 }
 
@@ -122,9 +146,12 @@ html, body {
 
 .start-playing-button button,
 .catching-button button {
-  width: 80%;                 /* default width */
-  max-width: 340px;           /* maximum size for large screens */
-  height: 10vh;               /* relative to viewport */
+  width: 80%;
+  /* default width */
+  max-width: 340px;
+  /* maximum size for large screens */
+  height: 10vh;
+  /* relative to viewport */
   max-height: 120px;
   background-size: cover;
   background-position: center;
@@ -133,7 +160,8 @@ html, body {
   cursor: pointer;
   transition: transform 0.2s;
   display: block;
-  margin: 5px auto;           /* center horizontally */
+  margin: 5px auto;
+  /* center horizontally */
 }
 
 .start-playing-button button:hover,
@@ -141,33 +169,49 @@ html, body {
   transform: scale(1.05);
   z-index: 5000;
 }
+
 /* ================= Responsive overrides ================= */
 
 /* 📱 Mobile (<768px) */
 @media (max-width: 767px) {
-  .topView, .sectionView, .timerView, .bottomView {
+
+  .topView,
+  .sectionView,
+  .timerView,
+  .bottomView {
     width: 100%;
   }
+
   .start-playing-button button,
   .catching-button button {
-    width: 350px;               /* fit almost entire screen */
-    height: 17vh;             /* taller for touch */
-    border: none;   /* optional mobile border */
-    margin: 5px auto;         /* vertical spacing & center */
-    scale:70%;
+    width: 350px;
+    /* fit almost entire screen */
+    height: 17vh;
+    /* taller for touch */
+    border: none;
+    /* optional mobile border */
+    margin: 5px auto;
+    /* vertical spacing & center */
+    scale: 70%;
   }
 
 
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .topView, .timerView, .bottomView {
-    width: 80%;   /* keep centered */
+
+  .topView,
+  .timerView,
+  .bottomView {
+    width: 80%;
+    /* keep centered */
   }
 
   .sectionView {
-    width: 80%;   /* center section */
-    height: calc(100vh - 9vh - 28vh); /* full remaining height between top & bottom */
+    width: 80%;
+    /* center section */
+    height: calc(100vh - 9vh - 28vh);
+    /* full remaining height between top & bottom */
   }
 
   .sectionView .veido-container {
@@ -181,7 +225,8 @@ html, body {
   .sectionView .veido-container video {
     width: 100%;
     height: 100%;
-    object-fit: cover;  /* fills section fully, may crop slightly */
+    object-fit: cover;
+    /* fills section fully, may crop slightly */
   }
 
   .timerView {
@@ -189,6 +234,7 @@ html, body {
     height: 60px;
     margin-top: -49px;
   }
+
   .start-playing-button button,
   .catching-button button {
     width: 500px;
@@ -197,22 +243,31 @@ html, body {
     border: none;
 
   }
+
 }
 
 
 /* 🖥 Large screens (≥992px) */
 @media (min-width: 992px) {
-  .topView, .sectionView, .timerView, .bottomView {
-    width: 60%;   /* centered */
+
+  .topView,
+  .sectionView,
+  .timerView,
+  .bottomView {
+    width: 60%;
+    /* centered */
   }
-    .timerView{
-      height: 50px;
+
+  .timerView {
+    height: 50px;
 
   }
-  .sectionView{
-    height:66vh;
+
+  .sectionView {
+    height: 66vh;
   }
-   .start-playing-button button,
+
+  .start-playing-button button,
   .catching-button button {
     width: 340px;
     height: 120px;
@@ -221,82 +276,122 @@ html, body {
     scale: 70%;
   }
 }
+
 /* ======= Controls Container ======= */
+
+
 .controls-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: 100%;               /* fills bottomView */
-  position: relative;
-  z-index: 1000;
-  padding: 2%;                /* prevents buttons touching edges */
-  box-sizing: border-box;
-  min-height: 10px;          /* safeguard: never collapse */
+  width: 0%;
+
 }
+
 
 /* Button images */
-.top    { background-image: url("/assets/Up.png"); }
-.left   { background-image: url("/assets/Left.png"); }
-.bottom { background-image: url("/assets/Down.png"); }
-.right  { background-image: url("/assets/Right.png"); }
+.top {
+  background-image: url("/assets/Up.png");
+}
 
-.claw_controw,
-.claw {
-  flex: 1;                     
-  height: 100%;
+.left {
+  background-image: url("/assets/Left.png");
+}
+
+.bottom {
+  background-image: url("/assets/Down.png");
+}
+
+.right {
+  background-image: url("/assets/Right.png");
+}
+
+.claw_controw {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  min-height: 120px;          /* ensures children stay visible */
+  gap: 10%;
 }
 
 
 
+
+/* ======= Movement Buttons Grid ======= */
 /* ======= Movement Buttons Grid ======= */
 /* ======= Movement Buttons Grid ======= */
 .movement-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 1.2vh;
-  width: 80%;                         /* scale with container */
-  max-width: clamp(120px, 20vw, 160px); /* min 120px, max 160px */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: clamp(100px, 15vw, 140px);
+  /* tighter scaling */
   aspect-ratio: 1/1;
-  flex-shrink: 0;   
+  gap: 0.5vh;
+  /* small internal spacing */
 }
 
+/* ======= Optional: position directional buttons in cross layout ======= */
+/* For example, if you want top, left, right, bottom buttons visually spaced around the center */
+.movement-grid .top {
+  grid-column: 2;
+  grid-row: 1;
+}
 
+.movement-grid .left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.movement-grid .center {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* optional */
+.movement-grid .right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.movement-grid .bottom {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+/* Optional: add padding inside buttons */
 .movement-grid button {
   width: 100%;
   height: 100%;
+  padding: 0%;
+  /* small internal spacing */
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  border: none;
+  border: solid red 2px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+
 }
+
 /* Hover/active states */
 .movement-grid button:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
 .movement-grid button:active {
   transform: scale(0.95);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
+
 
 /* ======= Catch Button ======= */
 .catch-button-wrapper {
-  width: 45%;                 /* reduce width */
-  max-width: 120px;           /* smaller max size */
+  width: clamp(70px, 12vw, 100px);
+  /* smaller */
   aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 90px;
 }
 
 .catch-button-wrapper button {
@@ -313,35 +408,57 @@ html, body {
 /* Hover/active states */
 .catch-button-wrapper button:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
 .catch-button-wrapper button:active {
   transform: scale(0.95);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* ======= Responsive Overrides ======= */
 @media (max-width: 767px) {
-  .movement-grid { width: 80%; gap: 1vh; max-width: 150px; }
-  .catch-button-wrapper { width: 65%; max-width: 120px; }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .movement-grid { width: 70%; gap: 1.3vh; max-width: 160px; }
-  .catch-button-wrapper { width: 55%; max-width: 140px; }
-}
-/* ======= Desktop adjustments ======= */
-@media (min-width: 992px) {
   .movement-grid {
-    width: 80%;               /* smaller than before */
-    max-width: 120px;         /* reduced from 160px */
-    gap: 1vh;                 /* slightly smaller gap */
+    width: 80%;
+    gap: 1vh;
+    max-width: 150px;
   }
 
   .catch-button-wrapper {
-    width: 35%;               /* smaller width */
-    max-width: 100px;         /* reduced from 130px */
-    margin-top: 1vh;          /* less margin */
+    width: 65%;
+    max-width: 120px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .movement-grid {
+    width: 70%;
+    gap: 1.3vh;
+    max-width: 160px;
+  }
+
+  .catch-button-wrapper {
+    width: 55%;
+    max-width: 140px;
+  }
+}
+
+/* ======= Desktop adjustments ======= */
+@media (min-width: 992px) {
+  .movement-grid {
+    width: 80%;
+    /* smaller than before */
+    max-width: 120px;
+    /* reduced from 160px */
+  }
+
+  .catch-button-wrapper {
+    width: 35%;
+    /* smaller width */
+    max-width: 100px;
+    /* reduced from 130px */
+    margin-top: 1vh;
+    /* less margin */
   }
 }
 
@@ -360,7 +477,7 @@ html, body {
 
 .movement-grid button:hover {
   transform: scale(1.15);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
 .movement-grid button:active {
@@ -381,7 +498,7 @@ html, body {
 
 .catch-button-wrapper button:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
 .catch-button-wrapper button:active {
@@ -392,29 +509,44 @@ html, body {
 @keyframes button-press {
   0% {
     transform: scale(1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
+
   50% {
     transform: scale(0.9);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   }
+
   100% {
     transform: scale(1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 }
 
 /* ======= Optional: Bounce on mount (for fun) ======= */
-.movement-grid button, .catch-button-wrapper button {
+.movement-grid button,
+.catch-button-wrapper button {
   animation: button-bounce 0.6s ease-out;
 }
 
 @keyframes button-bounce {
-  0%   { transform: scale(0); }
-  60%  { transform: scale(1.2); }
-  80%  { transform: scale(0.95); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0);
+  }
+
+  60% {
+    transform: scale(1.2);
+  }
+
+  80% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
+
 /* start and cachee ==> animations */
 
 /* ======= Start / Catch Buttons Animation ======= */
@@ -433,14 +565,14 @@ html, body {
 .start-playing-button button:hover,
 .catching-button button:hover {
   transform: scale(1.08);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
 }
 
 /* Press / active effect: quick press animation */
 .start-playing-button button:active,
 .catching-button button:active {
   transform: scale(0.92);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 /* Optional: subtle continuous pulse effect (not on mount) */
@@ -450,9 +582,15 @@ html, body {
 }
 
 @keyframes button-pulse {
-  0%   { transform: scale(1); }
-  100% { transform: scale(1.03); }
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.03);
+  }
 }
+
 /* loader */
 .bouncing-loader {
   display: flex;
@@ -476,6 +614,87 @@ html, body {
 }
 
 @keyframes bounce {
-  0%   { transform: translateY(0); }
-  100% { transform: translateY(-20px); }
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+
+/* ======= Controls Container (center inside bottomView) ======= */
+.controls-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  scale: 1.2;
+  margin-top: -10px;
+
+}
+
+/* ======= Movement Buttons Grid (joystick) ======= */
+.movement-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 75vh;
+  /* joystick scales with screen height */
+  aspect-ratio: 1/1;
+  /* keep square */
+  gap: 1vh;
+  /* spacing between buttons */
+}
+
+.movement-grid button {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  /* remove red debug border */
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* ======= Catch Button ======= */
+.catch-button-wrapper {
+  width: 22vh;
+  /* make catch button bigger */
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.catch-button-wrapper button {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.top,
+.left,
+.bottom,
+.right {
+  width: 140% !important;
+  height: 140% !important;
+}
+
+
+@media (min-width: 350px) and (max-width: 435px) {
+  .timerView {
+    margin-top: -40px;
+  }
+  .bottomView{
+     margin-top: -30px;
+  }
 }
