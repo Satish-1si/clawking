@@ -264,7 +264,7 @@ html, body {
   width: 80%;                         /* scale with container */
   max-width: clamp(120px, 20vw, 160px); /* min 120px, max 160px */
   aspect-ratio: 1/1;
-  
+  flex-shrink: 0;   
 }
 
 
@@ -296,7 +296,6 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5vh;          /* slightly less margin */
   min-width: 90px;
 }
 
