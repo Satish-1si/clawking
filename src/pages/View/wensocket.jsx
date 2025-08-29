@@ -565,7 +565,7 @@ const WebSocketComponent = () => {
         {/* Controls */}
         {videoReady&&<Col xs={12} lg={6} className="bottomView" style={{height:"30vh"}}>
           {/* start button */}
-         {!StartPlaying && (
+         {StartPlaying && (
           <div className="start-playing-button">
             <button onClick={StartQueue} aria-label="Start Playing" />
           </div>
@@ -580,7 +580,7 @@ const WebSocketComponent = () => {
          </div>
         )}
 
-           {!ControlButtons && (
+           {ControlButtons && (
         <div className="controls-container" >
             <div className='claw_controw'  >
             <div className="movement-grid">

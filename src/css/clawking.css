@@ -161,7 +161,7 @@ body {
   cursor: pointer;
   transition: transform 0.2s;
   display: block;
-  margin: 5px auto;
+  margin: 100px auto;
   /* center horizontally */
 }
 
@@ -170,6 +170,7 @@ body {
   transform: scale(1.05);
   z-index: 5000;
 }
+
 
 /* ================= Responsive overrides ================= */
 
@@ -183,20 +184,23 @@ body {
     width: 100%;
   }
 
+   .start-playing-button,
+  .catching-button {
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically */
+    width: 100%;
+    height: 100%; /* make parent full height of its container */
+  }
+
   .start-playing-button button,
   .catching-button button {
-    width: 350px;
-    /* fit almost entire screen */
-    height: 17vh;
-    /* taller for touch */
+    width: 350px;   /* fit almost entire screen */
+    height: 17vh;   /* taller for touch */
     border: none;
-    /* optional mobile border */
-    margin: 5px auto;
-    /* vertical spacing & center */
-    scale: 70%;
+    scale: 0.7;     /* shrink slightly */
+    margin: 0;      /* remove auto margin */
   }
- 
- 
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -236,13 +240,19 @@ body {
     margin-top: -49px;
   }
 
+  .start-playing-button,
+  .catching-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .start-playing-button button,
   .catching-button button {
     width: 500px;
     height: 20vh;
-    margin: 5px auto;
     border: none;
-
+    margin: 0; /* remove auto margin */
   }
 
 }
@@ -268,13 +278,21 @@ body {
     height: 66vh;
   }
 
+/* parent centering */
+  .start-playing-button,
+  .catching-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .start-playing-button button,
   .catching-button button {
     width: 340px;
     height: 120px;
-    margin: 5px;
     border: none;
-    scale: 70%;
+    scale: 0.7;
+    margin: 0; /* remove auto margin */
   }
 }
 
@@ -367,21 +385,20 @@ body {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  border: solid red 2px;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  /* transition: transform 0.15s ease, box-shadow 0.15s ease; */
 
 }
 
 /* Hover/active states */
 .movement-grid button:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); */
 }
 
 .movement-grid button:active {
   transform: scale(0.95);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); */
 }
 
 
@@ -403,18 +420,18 @@ body {
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* transition: transform 0.2s ease, box-shadow 0.2s ease; */
 }
 
 /* Hover/active states */
 .catch-button-wrapper button:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); */
 }
 
 .catch-button-wrapper button:active {
   transform: scale(0.95);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); */
 }
 
 /* ======= Responsive Overrides ======= */
@@ -465,132 +482,16 @@ body {
 
 
 /* ======= Movement Buttons Animation ======= */
-.movement-grid button {
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
-}
 
-.movement-grid button:hover {
-  transform: scale(1.15);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-}
 
-.movement-grid button:active {
-  animation: button-press 0.2s forwards;
-}
-
-/* ======= Catch Button Animation ======= */
-.catch-button-wrapper button {
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
-}
-
-.catch-button-wrapper button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-}
-
-.catch-button-wrapper button:active {
-  animation: button-press 0.2s forwards;
-}
 
 /* ======= Keyframes for Press Effect ======= */
-@keyframes button-press {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
 
-  50% {
-    transform: scale(0.9);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  }
 
-  100% {
-    transform: scale(1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-}
 
-/* ======= Optional: Bounce on mount (for fun) ======= */
-.movement-grid button,
-.catch-button-wrapper button {
-  animation: button-bounce 0.6s ease-out;
-}
 
-@keyframes button-bounce {
-  0% {
-    transform: scale(0);
-  }
 
-  60% {
-    transform: scale(1.2);
-  }
 
-  80% {
-    transform: scale(0.95);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* start and cachee ==> animations */
-
-/* ======= Start / Catch Buttons Animation ======= */
-.start-playing-button button,
-.catching-button button {
-  background-size: contain;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-
-  /* Smooth transitions for transform & shadow */
-  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-/* Hover effect: subtle pop */
-.start-playing-button button:hover,
-.catching-button button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
-}
-
-/* Press / active effect: quick press animation */
-.start-playing-button button:active,
-.catching-button button:active {
-  transform: scale(0.92);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-/* Optional: subtle continuous pulse effect (not on mount) */
-.start-playing-button button.pulse,
-.catching-button button.pulse {
-  animation: button-pulse 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes button-pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(1.03);
-  }
-}
 
 /* loader */
 .bouncing-loader {
@@ -658,7 +559,6 @@ body {
   border: none;
   /* remove red debug border */
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 /* ======= Catch Button ======= */
@@ -679,7 +579,6 @@ body {
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .top,
@@ -697,5 +596,55 @@ body {
   }
   .bottomView{
      margin-top: -30px;
+  }
+}
+
+/* Common rule: always center inside parent */
+.start-playing-button,
+.catching-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  height: 100%; /* take available parent height */
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive button styles */
+.start-playing-button button,
+.catching-button button {
+  border: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 80%;         /* fluid */
+  max-width: 500px;   /* cap on larger screens */
+  height: 15vh;       /* responsive height */
+}
+
+/* 📱 Small screens */
+@media (max-width: 767px) {
+  .start-playing-button button,
+  .catching-button button {
+    width: 90%;
+    height: 17vh;
+  }
+}
+
+/* 💻 Medium screens (tablet) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .start-playing-button button,
+  .catching-button button {
+    width: 500px;
+    height: 20vh;
+  }
+}
+
+/* 🖥 Large screens (desktop) */
+@media (min-width: 992px) {
+  .start-playing-button button,
+  .catching-button button {
+    width: 340px;
+    height: 120px;
   }
 }
