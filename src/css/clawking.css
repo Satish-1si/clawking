@@ -107,7 +107,7 @@ body {
   background-position: center;
   z-index: 20;
   position: relative;
-
+   z-index: 200001;
 }
 
 .timerText {
