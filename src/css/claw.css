@@ -90,7 +90,8 @@ html, body {
 
 /* Controls (Bottom) */
 .controlsection {
-  height: 35vh;
+   min-width:35vh ;
+  height: auto;
   flex-shrink: 0;
   width: 100%;
   background-image: url("/assets/bg.png");
@@ -100,8 +101,9 @@ html, body {
  /* border: rgb(111, 245, 2) solid 8px; */
   display: flex;
   align-items: center; /* Push content to the top */
-  padding: 0;              /* Remove internal gap */
+  padding: 10px;              /* Remove internal gap */
   margin: 0;               /* Ensure no outer gap */
+  
   
 }
 
@@ -109,12 +111,12 @@ html, body {
 .controlsection .control_button,
 .controlsection .claw_control {
   
-  height: 100%;
-  /* border: 4px solid rgb(7, 227, 247); */
+  /* height: 100%; */
+  border: 4px solid rgb(7, 227, 247);
 }
 
-.control_button { width: 50%; }
-.claw_control  { width: 60%; }
+.control_button { width: 60%; }
+.claw_control  { width: 40%; }
 
 /* Responsive */
 @media (min-width: 600px) and (max-width: 724px) {
@@ -126,4 +128,58 @@ html, body {
 @media (min-width: 1025px) {
   .containerSection { max-width: 45%; border-color: rgb(72, 255, 0); }
 }
+.control_button {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* equal width */
+  grid-template-rows: 1fr 1fr 1fr;    /* equal height */
+  width: 240px;   /* adjust size */
+  height: 240px;
+  margin: auto;
+}
 
+/* All buttons same size */
+.control_button button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #16c5e4;
+  box-shadow: 0 4px 0 #0a8da0;
+}
+
+/* Positioning */
+.control_button .top {
+  grid-column: 2;
+  grid-row: 1;
+  background-image: url("/assets/Up.png");
+}
+
+.control_button .left {
+  grid-column: 1;
+  grid-row: 2;
+  background-image: url("/assets/Left.png");
+}
+
+.control_button .right {
+  grid-column: 3;
+  grid-row: 2;
+  background-image: url("/assets/Right.png");
+}
+
+.control_button .bottom {
+  grid-column: 2;
+  grid-row: 3;
+  background-image: url("/assets/Down.png");
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .control_button {
+    width: 160px;
+    height: 160px;
+  }
+}

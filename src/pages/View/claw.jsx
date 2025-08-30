@@ -22,8 +22,17 @@ const Claw = () => {
       </div>
 
       <div className="controlsection">
-        <div className="control_button"></div>
-        <div className="claw_control"></div>
+       <div class="control_button">
+  <button class="top"></button>
+  <button class="left"></button>
+  <button class="right"></button>
+  <button class="bottom"></button>
+</div>
+
+
+        <div className="claw_control">
+
+        </div>
       </div>
     </div>
   )
