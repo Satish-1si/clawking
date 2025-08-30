@@ -1,0 +1,122 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  border: 1px solid cyan; /* Debug */
+}
+
+/* Main Container */
+.containerSection {
+  width: 100%;
+  height: 100dvh;  /* mobile safe viewport */
+  max-width: 100%;
+  background-color: #072847;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column; /* Stack nav, video, controls */
+}
+
+/* Navigation (Top) */
+.nav_section {
+  height: 5vh;
+  flex-shrink: 0;
+  background-image: url("/assets/nav.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Video/Content Section */
+
+.veidosection {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* prevent overflow cut */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Timer Wrapper at bottom */
+.timer-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: inline-block;
+  width: 100%;       /* responsive width */
+  max-width: 400px; /* limit size */
+}
+
+/* Timer background image */
+.timer-bg {
+  width: 100%;
+  height: 100%;       /* make it fill the container height */
+  object-fit: fill;  /* scale & crop to cover fully */
+  display: block;
+ 
+}
+
+
+/* Timer text inside */
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+   font-size: 1em; 
+  font-weight: bold;
+  color: white;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.veidosection img,
+.veidosection video {
+  height: 100%;
+  object-fit: cover; /* fills container without distortion */
+}
+
+
+/* Controls (Bottom) */
+.controlsection {
+  height: 35vh;
+  flex-shrink: 0;
+  width: 100%;
+  background-image: url("/assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  border: 1px solid red; /* Debug */
+}
+
+.controlsection .control_button,
+.controlsection .claw_control {
+  height: 100%;
+  border: 2px solid rgb(192, 255, 196);
+}
+
+.control_button { width: 60%; }
+.claw_control  { width: 40%; }
+
+/* Responsive */
+@media (min-width: 600px) and (max-width: 724px) {
+  .containerSection { max-width: 75%; border-color: rgb(255, 0, 212); }
+}
+@media (min-width: 725px) and (max-width: 1024px) {
+  .containerSection { max-width: 60%; border-color: rgb(255, 102, 0); }
+}
+@media (min-width: 1025px) {
+  .containerSection { max-width: 45%; border-color: rgb(72, 255, 0); }
+}
+
