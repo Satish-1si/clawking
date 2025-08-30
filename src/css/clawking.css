@@ -272,7 +272,7 @@ body {
   }
 
   .sectionView {
-    height: 66vh;
+    height:auto;
   }
 
 /* parent centering */
