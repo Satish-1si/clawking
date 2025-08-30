@@ -21,8 +21,8 @@ if (true) {
   UI = "682845d4e0a488e1083ca4b4"
   MN = "84ADFCF1237C"
   GI = "670f60219d6cefc370346657"
-  videoLink = "http://15.206.133.82:1985/rtc/v1/whep/?app=live&stream=CK_09-01.flv";
-  socketURL = "ws://3.111.179.100:59199/ws";
+  videoLink = "https://15.206.133.82:1985/rtc/v1/whep/?app=live&stream=CK_09-01.flv";
+  socketURL = "wss://3.111.179.100:59199/ws";
   tp = "ACJ3winyybgztU1YH"
 
 }
@@ -567,7 +567,12 @@ const WebSocketComponent = () => {
           {/* start button */}
          {StartPlaying && (
           <div className="start-playing-button">
-            <button onClick={StartQueue } aria-label="Start Playing" />
+            <button onClick={
+             ()=>{
+                startPlayingVisible(false)
+                ControlButtonsVisible(true)
+             }
+             } aria-label="Start Playing" />
           </div>
          )}
           {/* cache button */}
@@ -622,7 +627,12 @@ const WebSocketComponent = () => {
           <div className='claw' >
                <div className="catch-button-wrapper">
             <button
-              onClick={Catch}
+              onClick={()=>{
+                  navigate("/noon");
+                      localStorage.setItem("gameResult", true);
+
+             window.location.reload();
+              }}
               className="catch-button"
               style={{ backgroundImage: "url('/assets/catch.png')" }}
             />
