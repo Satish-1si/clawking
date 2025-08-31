@@ -155,7 +155,7 @@ body {
   height: 10vh;
   /* relative to viewport */
   max-height: 120px;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   border: none;
@@ -272,7 +272,7 @@ body {
   }
 
   .sectionView {
-    height:auto;
+    height: 66vh;
   }
 
 /* parent centering */
@@ -326,7 +326,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 10%;
-  margin-top: 10%;
+  /* margin-top: 10%; */
 }
 
 
