@@ -555,7 +555,7 @@ const [isLoading, setIsLoading] = useState(true);
       setIsLoading(false);
       setVideoReady(false);
     }}
-    src="https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"
+    // src="https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"
   />
 </div>
 
