@@ -21,8 +21,8 @@ if (true) {
   UI = "682845d4e0a488e1083ca4b4"
   MN = "84ADFCF1237C"
   GI = "670f60219d6cefc370346657"
-  videoLink = "https://15.206.133.82:1985/rtc/v1/whep/?app=live&stream=CK_09-01.flv";
-  socketURL = "wss://3.111.179.100:59199/ws";
+  videoLink = "http://15.206.133.82:1985/rtc/v1/whep/?app=live&stream=CK_09-01.flv";
+  socketURL = "ws://3.111.179.100:59199/ws";
   tp = "ACJ3winyybgztU1YH"
 
 }
@@ -38,6 +38,7 @@ else {
 
 
 const WebSocketComponent = () => {
+const [isLoading, setIsLoading] = useState(true);
 
   const [socket, setSocket] = useState(null);
   const [StartPlaying, startPlayingVisible] = useState(true);
@@ -514,8 +515,8 @@ const WebSocketComponent = () => {
 
         {/* Video / section */}
          <Col xs={12} lg={3} className="sectionView">
-<div className="veido-container" >
-  {!videoReady && (
+<div className="veido-container">
+  {(isLoading || !videoReady) && (
     <div
       className="video-preloader"
       style={{
@@ -544,9 +545,16 @@ const WebSocketComponent = () => {
     autoPlay
     playsInline
     muted
-    onLoadedMetadata={() => console.log("Metadata loaded")}
+    onLoadedData={() => {
+      setIsLoading(false);   // first frame is ready
+    }}
     onPlaying={() => setVideoReady(true)}
     onWaiting={() => setVideoReady(false)}
+    onError={(e) => {
+      console.error("Video load failed", e);
+      setIsLoading(false);
+      setVideoReady(false);
+    }}
     src="https://ck-prod-assets.s3.ap-south-1.amazonaws.com/68a7f7335bf0675194807fc71755838429449144.mp4"
   />
 </div>
@@ -567,12 +575,7 @@ const WebSocketComponent = () => {
           {/* start button */}
          {StartPlaying && (
           <div className="start-playing-button">
-            <button onClick={
-             ()=>{
-                startPlayingVisible(false)
-                ControlButtonsVisible(true)
-             }
-             } aria-label="Start Playing" />
+            <button onClick={StartQueue } aria-label="Start Playing" />
           </div>
          )}
           {/* cache button */}
@@ -627,12 +630,7 @@ const WebSocketComponent = () => {
           <div className='claw' >
                <div className="catch-button-wrapper">
             <button
-              onClick={()=>{
-                  navigate("/noon");
-                      localStorage.setItem("gameResult", true);
-
-             window.location.reload();
-              }}
+              onClick={Catch}
               className="catch-button"
               style={{ backgroundImage: "url('/assets/catch.png')" }}
             />
