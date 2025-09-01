@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom"; // <-- changed
 import useScrollToTop from "./hooks/useScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -12,7 +12,6 @@ import NotFound from "./pages/NotFound";
 import Noon from "./pages/noon";
 import { lazy, Suspense } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 const Game = lazy(() => import("./pages/game"));
 
@@ -32,9 +31,10 @@ const AppContent = () => {
       <Route
         path="/PlayZone"
         element={
-          <Suspense fallback={<div className="p-4 text-center">Loading Game...</div>}>
-            <Game />
-          </Suspense>
+         <Suspense fallback={<div className="p-4 text-center">Loading Game...</div>}>
+  <Game />  {/* or whatever component should render here */}
+</Suspense>
+
         }
       />
 
@@ -49,9 +49,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <HashRouter> {/* <-- changed from BrowserRouter */}
         <AppContent />
-      </BrowserRouter>
+      </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
