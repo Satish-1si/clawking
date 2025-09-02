@@ -340,6 +340,7 @@ body {
   grid-template-rows: 1fr 1fr 1fr;
   width: clamp(100px, 15vw, 140px);
   /* tighter scaling */
+  margin-top: -30px;
   aspect-ratio: 1/1;
   gap: 0.5vh;
   /* small internal spacing */
