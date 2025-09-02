@@ -596,33 +596,33 @@ const [isLoading, setIsLoading] = useState(true);
   <button
     className='top'
     onTouchStart={(e) => { e.preventDefault(); Up(); }}
-    onTouchEnd={(e) => { e.preventDefault(); Stop(); }}
-    onMouseDown={(e) => { e.preventDefault(); Up(); }}
-    onMouseUp={(e) => { e.preventDefault(); Stop(); }}
+    onTouchEnd={(e) => { Stop(); }}
+    onMouseDown={(e) => { Up(); }}
+    onMouseUp={(e) => {  Stop(); }}
   />
   <div></div>
   <button
   className='left'
     onTouchStart={(e) => { e.preventDefault(); Left(); }}
-    onTouchEnd={(e) => { e.preventDefault(); Stop(); }}
-    onMouseDown={(e) => { e.preventDefault(); Left(); }}
-    onMouseUp={(e) => { e.preventDefault(); Stop(); }}
+    onTouchEnd={(e) => { Stop(); }}
+    onMouseDown={(e) => {  Left(); }}
+    onMouseUp={(e) => {  Stop(); }}
   />
   <div></div>
   <button
   className='right'
     onTouchStart={(e) => { e.preventDefault(); Right(); }}
-    onTouchEnd={(e) => { e.preventDefault(); Stop(); }}
-    onMouseDown={(e) => { e.preventDefault(); Right(); }}
-    onMouseUp={(e) => { e.preventDefault(); Stop(); }}
+    onTouchEnd={(e) => {Stop(); }}
+    onMouseDown={(e) => {Right(); }}
+    onMouseUp={(e) => {Stop(); }}
   />
   <div></div>
   <button
   className='bottom'
     onTouchStart={(e) => { e.preventDefault(); Down(); }}
-    onTouchEnd={(e) => { e.preventDefault(); Stop(); }}
+    onTouchEnd={(e) => { Stop(); }}
     onMouseDown={(e) => { e.preventDefault(); Down(); }}
-    onMouseUp={(e) => { e.preventDefault(); Stop(); }}
+    onMouseUp={(e) => { Stop(); }}
   />
   <div></div>
 
