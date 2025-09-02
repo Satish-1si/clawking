@@ -8,6 +8,8 @@ body {
   overflow: hidden;
   /* disable scroll */
   box-sizing: border-box;
+    background-color: #072847;
+
 }
 
 .app-container {
