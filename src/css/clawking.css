@@ -660,3 +660,27 @@ body {
 
 }
 }
+
+/* Apply to all buttons */
+button {
+  -webkit-touch-callout: none;   /* Disable iOS long-press menu */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-tap-highlight-color: transparent; /* Remove mobile highlight */
+  appearance: none;
+  -webkit-appearance: none;
+
+  cursor: pointer; /* Make sure it feels clickable */
+}
+
+/* Apply same behavior to clickable images */
+img {
+  -webkit-touch-callout: none;   /* Disable "Save Image" on long-press */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
