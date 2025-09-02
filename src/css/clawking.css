@@ -660,27 +660,33 @@ body {
 
 }
 }
-
 /* Apply to all buttons */
 button {
-  -webkit-touch-callout: none;   /* Disable iOS long-press menu */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  -webkit-touch-callout: none;   /* iOS Safari - disable long-press menu */
+  -webkit-user-select: none;     /* Chrome/Safari */
+  -moz-user-select: none;        /* Firefox */
+  -ms-user-select: none;         /* IE10+ */
+  user-select: none;             /* Standard */
 
-  -webkit-tap-highlight-color: transparent; /* Remove mobile highlight */
-  appearance: none;
-  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent; /* Remove highlight on mobile tap */
+  appearance: none;              /* Reset styling */
+  -webkit-appearance: none;      /* For Safari */
+  -moz-appearance: none;         /* For Firefox (legacy) */
 
-  cursor: pointer; /* Make sure it feels clickable */
+  cursor: pointer;               /* Make sure it looks clickable */
+  outline: none;                 /* Prevent default focus outline (optional) */
+  border: none;                  /* Reset default border */
+  background: none;              /* Reset background */
 }
 
 /* Apply same behavior to clickable images */
 img {
-  -webkit-touch-callout: none;   /* Disable "Save Image" on long-press */
+  -webkit-touch-callout: none;   /* Disable "Save Image" menu on iOS Safari */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  -webkit-tap-highlight-color: transparent; /* Prevent tap highlight */
+  pointer-events: auto;          /* Still allow clicks */
 }
