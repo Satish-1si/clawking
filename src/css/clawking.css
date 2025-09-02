@@ -661,51 +661,32 @@ body {
 }
 }
 /* Apply to all buttons */
-/* Buttons - universal safe reset */
 button {
-  all: unset;                     /* wipe all defaults (cross-browser) */
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  -webkit-touch-callout: none;   /* iOS Safari - disable long-press menu */
+  -webkit-user-select: none;     /* Chrome/Safari */
+  -moz-user-select: none;        /* Firefox */
+  -ms-user-select: none;         /* IE10+ */
+  user-select: none;             /* Standard */
 
-  width: 60px;                    /* example size, adjust */
-  height: 60px;
-  background-color: #1e3a8a;      /* fallback background */
-  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent; /* Remove highlight on mobile tap */
+  appearance: none;              /* Reset styling */
+  -webkit-appearance: none;      /* For Safari */
+  -moz-appearance: none;         /* For Firefox (legacy) */
 
-  /* Disable unwanted behaviors */
-  -webkit-user-select: none;      /* Safari / iOS */
-  -moz-user-select: none;         /* Firefox */
-  -ms-user-select: none;          /* IE/Edge (legacy) */
-  user-select: none;              /* Standard */
-
-  -webkit-touch-callout: none;    /* Disable iOS long-press */
-  -webkit-tap-highlight-color: transparent; /* Remove mobile flash */
-  -webkit-text-size-adjust: none; /* Prevent iOS zoom font resizing */
-  touch-action: manipulation;     /* Prevent 300ms delay + zoom on tap */
+  cursor: pointer;               /* Make sure it looks clickable */
+  outline: none;                 /* Prevent default focus outline (optional) */
+  border: none;                  /* Reset default border */
+  background: none;              /* Reset background */
 }
 
-/* Press effect */
-button:active {
-  transform: scale(0.95);
-}
-
-/* Inside images behave same everywhere */
-button img {
-  pointer-events: none;           /* Block right-click/long-press */
-  -webkit-user-drag: none;        /* Safari / Chrome */
-  user-drag: none;                /* Standard */
-}
-
-/* Apply same safety to links and images */
-a, img, div {
+/* Apply same behavior to clickable images */
+img {
+  -webkit-touch-callout: none;   /* Disable "Save Image" menu on iOS Safari */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent; /* Prevent tap highlight */
+  pointer-events: auto;          /* Still allow clicks */
 }
